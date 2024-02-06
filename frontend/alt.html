@@ -1,11 +1,196 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome what da hell</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>SpotifyAPI WebProject v2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
 </head>
 <body>
-    <h1>My brother in christ we made it here</h1>
+    <div class="Header" style="width: 100%; height: 80px; padding-left: 24px; padding-right: 24px; padding-top: 18px; padding-bottom: 18px; background: #95B7D0; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); justify-content: center; align-items: center; gap: 1256px; display: inline-flex">
+        <div class="MusicMusicListFilled" style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+            
+            <img src="music-dropdown.png" alt="dropdown" style="width: 29.17px; height: 25.83px; background: #33333300"></img>
+        </div>
+        
+        <div class="About" style="width: 96px; height: 44px; padding-top: 8px; padding-bottom: 7px; padding-left: 13px; padding-right: 14px; justify-content: center; align-items: center; display: inline-flex">
+            <div class="About" style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">About</div>
+        </div>
+    </div>
+
+    <!--
+    <h1>SpotifyAPI WebProject v2</h1>
+    <p>Sarah Hennessey's Nostalgia Study in the USC Brain and Music Lab</p>
+    <button id="myButton">Click me</button>
+    -->
+    
+    
+    
+
+    <div class="container">
+        <form action="">
+            <input type="hidden" id="hidden_token">
+
+            
+            <div class="input-container">
+
+                <div class="upload" id="upload">
+                    <a href="/sample-download/csv" class="sampleFile">SampleFile.xlsx</a>
+                    <div class="upload-item">
+                        <label for="fileInput" class="upload-label">Upload File:</label>
+                        <!-- <button id="upload-check" class="upload-check">Choose File</button> -->
+                        <input type="file" id="input_file" class="form-control form-control-sm input-file" accept=".csv">
+                        
+                        
+                    </div>
+
+                    <div id="upload-popup">
+                        <!-- popup code in main.js-->
+                    </div>
+            
+                    <button type="submit" id="upload_check" class="button">Upload</button> <!-- class="btn btn-success"-->
+                    <div class="col-sm-6 row form-group px-0">
+                        <button type="submit" id="btn_submit" class="btn_submit ">Show Suggestions!</button>
+                    </div>
+                    
+                </div>
+
+
+                <div class="delta-input" id="delta-input">
+                    <div class="text">What would you like to match based on?</div>
+
+                    <div class="delta-sliders">
+                        <!-- Delta GENERAL -->
+                        <div class="deltaItem">
+                            <label for="general_slider" class="deltaLabel">General Slider:</label>
+                            <input type="range" step="0.01" id="general_slider" class="slider-color" min="0.1" max="0.2" oninput="updateAllSliders(this.value)">
+                            <output id="generalSliderOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Acousticness (uneven caused by checkmark) yep -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_acousticness" class="checkbox" onchange="checkboxChanged(this)"/>
+                            <label for="delta_acousticness" class="deltaLabel">Acousticness:</label>
+                            <input type="range" step="0.01" id="delta_acousticness" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaAcousticnessOutput').value = delta_acousticness.value">
+                            
+                            <output id="deltaAcousticnessOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Danceability -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_danceability" class="checkbox" onchange="checkboxChanged(this)"/>
+                            <label for="delta_danceability" class="deltaLabel">Danceability:</label>
+                            <input type="range" step="0.01" id="delta_danceability" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaDanceabilityOutput').value = delta_danceability.value">
+                            <output id="deltaDanceabilityOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Energy -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_energy" class="checkbox" onchange="checkboxChanged(this)"/>
+
+                            <label for="delta_energy" class="deltaLabel">Energy:</label>
+                            <input type="range" step="0.01" id="delta_energy"  class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaEnergyOutput').value = delta_energy.value">
+                            <output id="deltaEnergyOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Instrumentalness -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_instrumentalness" class="checkbox" onchange="checkboxChanged(this)" />
+
+                            <label for="delta_instrumentalness" class="deltaLabel">Instrumentalness:</label>
+                            <input type="range" step="0.01" id="delta_instrumentalness" class="slider-color  sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaInstrumentalnessOutput').value = delta_instrumentalness.value">
+                            <output id="deltaInstrumentalnessOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Liveness -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_liveness" class="checkbox" onchange="checkboxChanged(this)"/>
+
+                            <label for="delta_liveness" class="deltaLabel">Liveness:</label>
+                            <input type="range" step="0.01" id="delta_liveness" class="slider-color  sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaLivenessOutput').value = delta_liveness.value">
+                            <output id="deltaLivenessOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Loudness -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_loudness" class="checkbox" onchange="checkboxChanged(this)"/>
+
+                            <label for="delta_loudness" class="deltaLabel">Loudness:</label>
+                            <input type="range" step="2" id="delta_loudness" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaLoudnessOutput').value = delta_loudness.value">
+                            <output id="deltaLoudnessOutput" class="delta-output">3</output>
+                        </div>
+
+                        <!-- Delta Speechiness -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_speechiness" class="checkbox"  onchange="checkboxChanged(this)"/>
+
+                            <label for="delta_speechiness" class="deltaLabel">Speechiness:</label>
+                            <input type="range" step="0.01" id="delta_speechiness" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaSpeechinessOutput').value = delta_speechiness.value">
+                            <output id="deltaSpeechinessOutput" class="delta-output">0.15</output>
+                        </div>
+
+                        <!-- Delta Tempo -->
+                        <div class="deltaItem">
+                            
+                            <input type="checkbox" id="use_tempo" class="checkbox"  onchange="checkboxChanged(this)"/>
+                            <label for="delta_tempo" class="deltaLabel">Tempo:</label>
+                            <input type="range" step="1" id="delta_tempo"  class="slider-color sync-slider" placeholder="Enter a decimal number" min="0" max="100" oninput="document.getElementById('deltaTempoOutput').value = delta_tempo.value">
+                            <output id="deltaTempoOutput" class="delta-output">60</output>
+                        </div>
+
+                        <!-- Delta Valence -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_valence" class="checkbox" onchange="checkboxChanged(this)" />
+                            <label for="delta_valence" class="deltaLabel">Valence:</label>
+                            <input type="range" step="0.01" id="delta_valence"  class="slider-color  sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaValenceOutput').value = delta_valence.value">
+                            <output id="deltaValenceOutput" class="delta-output">0.15</output>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            
+        </form>
+        <div class = "col-sm-6 px-0", id="rec-download">
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 px-0">
+                <div class="list-group rec-list">
+                    
+                </div>                                             
+            </div>
+
+
+            <div class="offset-md-1 col-sm-4" id="rec-detail">
+
+            </div>
+        </div>
+        
+        <div  class="special col-sm-6 px-0", id="all-clear">
+            <button id="btn_clear" class="button">Next Song</button>
+        </div>
+
+        
+
+    </div>
+    <div class="Footer" style="width: 1440px; height: 104px; padding-top: 20px; padding-bottom: 19px; padding-left: 482px; padding-right: 482px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid; flex-direction: column; justify-content: center; align-items: center; gap: 8px; display: inline-flex">
+        <div class="CreatedBySarahHennessyFromTheUscBrainAndMusicLab2023LosAngelesCaLastUpdatedMmDdYyyy" style="text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2023 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
+        <div class="CiteThisTool" style="width: 99px; height: 19px; justify-content: center; align-items: center; display: inline-flex">
+          <div class="CiteThisTool" style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
+        </div>
+        <div class="BaseBug" style="width: 100%; height: 100%; position: relative">
+            <img src="bug.png" alt="bug" style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #65698600"></img>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="alt.js"></script>
 </body>
+</html>
