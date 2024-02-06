@@ -38,6 +38,10 @@ app.get('/main', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
+app.get('/alt', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/alt.html'));
+})
+
 app.get('/loginpage', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/login.html'));
 });
