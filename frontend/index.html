@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotifyAPI WebProject v2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+</head>
+<body>
+    <div class="Header" style="width: 100%; height: 80px; padding-left: 24px; padding-right: 24px; padding-top: 18px; padding-bottom: 18px; background: #95B7D0; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); justify-content: center; align-items: center; gap: 1256px; display: inline-flex">
+        <div class="MusicMusicListFilled" style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+            
+            <img src="music-dropdown.png" alt="dropdown" style="width: 29.17px; height: 25.83px; background: #33333300"></img>
+        </div>
+        
+        <div class="About" style="width: 96px; height: 44px; padding-top: 8px; padding-bottom: 7px; padding-left: 13px; padding-right: 14px; justify-content: center; align-items: center; display: inline-flex">
+            <div class="About" style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">About</div>
+        </div>
+    </div>
+
+    <!--
+    <h1>SpotifyAPI WebProject v2</h1>
+    <p>Sarah Hennessey's Nostalgia Study in the USC Brain and Music Lab</p>
+    <button id="myButton">Click me</button>
+    -->
+    
+    
+    
+
+    <div class="container">
+        <form action="">
+            <input type="hidden" id="hidden_token">
+
+            
+            <div class="input-container">
+                <!-- Page Number -->
+                <div class="col-sm-6" id="page-number">
+
+                </div>
+                <!-- Song & Artist Input -->
+                <div class="songArtistInput">
+                    <!-- Song Input -->
+                    <div class="songInput">
+                        <div class="inputLabel">Song1:</div>
+                        <div class="inputBox">
+                            <input type="text" id="input_song" class="inputText" placeholder="Enter a song">
+                        </div>
+                    </div>
+                    <!-- Artist Input -->
+                    <div class="artistInput">
+                        <div class="inputLabel">Artist1:</div>
+                        <div class="inputBox">
+                            <input type="text" id="input_artist" class="inputText" placeholder="Enter an artist">
+                        </div>
+                    </div>
+                    <!-- Check Button -->
+                    <button id="btn_check1" class="button">Check</button>
+                </div>
+
+                
+
+                <div class="upload" id="upload">
+                    <a href="/sample-download/csv" class="sampleFile">SampleFile.xlsx</a>
+                    <div class="upload-item">
+                        <label for="fileInput" class="upload-label">Upload File:</label>
+                        <!-- <button id="upload-check" class="upload-check">Choose File</button> -->
+                        <input type="file" id="input_file" class="form-control form-control-sm input-file" accept=".csv">
+                        
+                        
+                    </div>
+
+                    <div id="upload-popup">
+                        <!-- popup code in main.js-->
+                    </div>
+            
+                    <button type="submit" id="upload_check" class="button">Upload</button> <!-- class="btn btn-success"-->
+                    <div class="col-sm-6 row form-group px-0">
+                        <button type="submit" id="btn_submit" class="btn_submit ">Show Suggestions!</button>
+                    </div>
+                    
+                </div>
+
+
+                <div id="confirm">
+                    <!-- confirm code in main.js -->
+                </div>
+
+
+                <div class="delta-input" id="delta-input">
+                    <!-- deltaInput.html inserted here -->
+                </div>
+
+            </div>
+            
+            <!-- if fuckup, put submit button back here DO IT-->
+            
+            
+            
+            <!-- try 2
+            <div class="ButtonPublicacc" style="width: 298px; height: 48px; padding-left: 56px; padding-right: 56px; padding-top: 14px; padding-bottom: 14px; left: 571px; top: 737px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+                <button id="btn_submit" class="btn_submit">
+                    <div class="UseAPublicAccount" style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">use a public account</div>
+                </button>
+                <div class="Arrow" style="width: 22px; height: 9px; position: relative">
+                    <div class="Vector1" style="width: 22px; height: 0px; left: 0px; top: 4.25px; position: absolute; border: 3px #333333 solid"></div>
+                    <div class="Vector2" style="width: 4px; height: 9px; left: 18px; top: 0px; position: absolute; border-radius: 1px; border: 3px #333333 solid"></div>
+                </div>
+            </div>
+            -->
+            <!--
+            <div class="Next" style="width: 400px; height: 32px; border: 4px solid #04447f; padding-left: 56px; padding-right: 56px; justify-content: flex-start; align-items: center; gap: 4.25px; display: inline-flex">
+                <button type="submit" id="btn_submit" class="btn_submit">
+                    <div class="UseAPublicAccount" style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">Next</div>
+                </button>
+            
+            </div>
+            -->
+            
+            
+        </form>
+        <div class = "col-sm-6 px-0", id="rec-download">
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 px-0">
+                <div class="list-group rec-list">
+                    
+                </div>                                             
+            </div>
+
+
+            <div class="offset-md-1 col-sm-4" id="rec-detail">
+
+            </div>
+        </div>
+        
+        <div  class="special col-sm-6 px-0", id="all-clear">
+            <button id="btn_clear" class="button">Next Song</button>
+        </div>
+
+        
+
+    </div>
+    <div class="Footer" style="width: 1440px; height: 104px; padding-top: 20px; padding-bottom: 19px; padding-left: 482px; padding-right: 482px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid; flex-direction: column; justify-content: center; align-items: center; gap: 8px; display: inline-flex">
+        <div class="CreatedBySarahHennessyFromTheUscBrainAndMusicLab2023LosAngelesCaLastUpdatedMmDdYyyy" style="text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2023 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
+        <div class="CiteThisTool" style="width: 99px; height: 19px; justify-content: center; align-items: center; display: inline-flex">
+          <div class="CiteThisTool" style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
+        </div>
+        <div class="BaseBug" style="width: 100%; height: 100%; position: relative">
+            <img src="bug.png" alt="bug" style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #65698600"></img>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+</body>
+</html>

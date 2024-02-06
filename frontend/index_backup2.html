@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpotifyAPI WebProject v2</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    
+    <h1>SpotifyAPI WebProject v2</h1>
+    <p>Sarah Hennessey's Nostalgia Study in the USC Brain and Music Lab</p>
+    <button id="myButton">Click me</button>
+
+    <div class="container">
+        <form action="">
+            <input type="hidden" id="hidden_token">
+
+            <!-- Page Number -->
+            <div class="col-sm-6" id="page-number">
+
+            </div>
+
+            
+            <div class="input-container">
+                
+                <!-- Song & Artist Input -->
+                <div class="songArtistInput">
+                    <!-- Song Input -->
+                    <div class="songInput">
+                        <div class="inputLabel">Song1:</div>
+                        <div class="inputBox">
+                            <input type="text" id="input_song" class="inputText" placeholder="Enter a song">
+                        </div>
+                    </div>
+                    <!-- Artist Input -->
+                    <div class="artistInput">
+                        <div class="inputLabel">Artist1:</div>
+                        <div class="inputBox">
+                            <input type="text" id="input_artist" class="inputText" placeholder="Enter an artist">
+                        </div>
+                    </div>
+                    <!-- Check Button -->
+                    <button id="btn_check1" class="button">Check</button>
+                </div>
+
+                <div class="upload" id="upload">
+                    <div class="upload-item">
+                        <label for="fileInput" class="upload-label">Upload File:</label>
+                        <input type="file" id="input_file" class="form-control form-control-sm upload-file" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                    </div>
+            
+                    <button type="submit" id="upload_check" class="button">Upload</button> <!-- class="btn btn-success"-->
+
+                </div>
+
+                <div id="confirm">
+
+                </div>
+
+
+                <!-- Delta Inputs -->
+                <!-- Delta GENERAL -->
+                <div class="delta-input">
+                    <div class="deltaItem">
+                        <label for="general_slider" class="deltaLabel">General Slider:</label>
+                        <input type="range" step="0.01" id="general_slider" class="slider-color" min="0.1" max="0.2" oninput="updateAllSliders(this.value)">
+                        <output id="generalSliderOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Acousticness (uneven caused by checkmark)-->
+                    <div class="deltaItem">
+                        <label for="delta_acousticness" class="deltaLabel">Delta Acousticness:</label>
+                        <input type="range" step="0.01" id="delta_acousticness" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaAcousticnessOutput').value = delta_acousticness.value">
+                        <input type="checkbox" id="use_acousticness" class="col-sm-1" />
+                        <output id="deltaAcousticnessOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Danceability -->
+                    <div class="deltaItem">
+                        <label for="delta_danceability" class="deltaLabel">Delta Danceability:</label>
+                        <input type="range" step="0.01" id="delta_danceability" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaDanceabilityOutput').value = delta_danceability.value">
+                        <input type="checkbox" id="use_danceability" class="col-sm-1" />
+                        <output id="deltaDanceabilityOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Energy -->
+                    <div class="deltaItem">
+                        <label for="delta_energy" class="deltaLabel">Delta Energy:</label>
+                        <input type="range" step="0.01" id="delta_energy"  class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaEnergyOutput').value = delta_energy.value">
+                        <input type="checkbox" id="use_energy" class="col-sm-1" />
+                        <output id="deltaEnergyOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Instrumentalness -->
+                    <div class="deltaItem">
+                        <label for="delta_instrumentalness" class="deltaLabel">Delta Instrumentalness:</label>
+                        <input type="range" step="0.01" id="delta_instrumentalness" class="slider-color  sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaInstrumentalnessOutput').value = delta_instrumentalness.value">
+                        <input type="checkbox" id="use_instrumentalness" class="col-sm-1" />
+                        <output id="deltaInstrumentalnessOutput" class="col-sm-2  mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Liveness -->
+                    <div class="deltaItem">
+                        <label for="delta_liveness" class="deltaLabel">Delta Liveness:</label>
+                        <input type="range" step="0.01" id="delta_liveness" class="slider-color  sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaLivenessOutput').value = delta_liveness.value">
+                        <input type="checkbox" id="use_liveness" class="col-sm-1" />
+                        <output id="deltaLivenessOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Loudness -->
+                    <div class="deltaItem">
+                        <label for="delta_loudness" class="deltaLabel">Delta Loudness:</label>
+                        <input type="range" step="2" id="delta_loudness" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaLoudnessOutput').value = delta_loudness.value">
+                        <input type="checkbox" id="use_loudness" class="col-sm-1" />
+                        <output id="deltaLoudnessOutput" class="col-sm-2  mt-2">3</output>
+                    </div>
+        
+                    <!-- Delta Speechiness -->
+                    <div class="deltaItem">
+                        <label for="delta_speechiness" class="deltaLabel">Delta Speechiness:</label>
+                        <input type="range" step="0.01" id="delta_speechiness" class="slider-color sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaSpeechinessOutput').value = delta_speechiness.value">
+                        <input type="checkbox" id="use_speechiness" class="col-sm-1" />
+                        <output id="deltaSpeechinessOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+        
+                    <!-- Delta Tempo -->
+                    <div class="deltaItem">
+                        <label for="delta_tempo" class="deltaLabel">Delta Tempo:</label>
+                        <input type="range" step="1" id="delta_tempo"  class="slider-color sync-slider" placeholder="Enter a decimal number" min="0" max="100" oninput="document.getElementById('deltaTempoOutput').value = delta_tempo.value">
+                        <input type="checkbox" id="use_tempo" class="col-sm-1" />
+                        <output id="deltaTempoOutput" class="col-sm-2  mt-2">60</output>
+                    </div>
+        
+                    <!-- Delta Valence -->
+                    <div class="deltaItem">
+                        <label for="delta_valence" class="deltaLabel">Delta Valence:</label>
+                        <input type="range" step="0.01" id="delta_valence"  class="slider-color  sync-slider" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaValenceOutput').value = delta_valence.value">
+                        <input type="checkbox" id="use_valence" class="col-sm-1" />
+                        <output id="deltaValenceOutput" class="col-sm-2 mt-2">0.15</output>
+                    </div>
+
+                </div>
+
+            </div>
+            
+            
+
+            
+            <div class="col-sm-6 row form-group px-0">
+                <button type="submit" id="btn_submit" class="btn btn-success col-sm-12">Submit</button>
+            </div>
+        </form>
+        <div class = "col-sm-6 px-0", id="rec-download">
+
+        </div>
+        <div class="row">
+            <div class="col-sm-6 px-0">
+                <div class="list-group rec-list">
+                    
+                </div>                                             
+            </div>
+
+
+            <div class="offset-md-1 col-sm-4" id="rec-detail">
+
+            </div>
+        </div>
+        
+        <div class="col-sm-6 px-0", id="all-clear">
+            <button id="btn_clear">Next</button>
+        </div>
+
+        <div class="Footer" style="width: 1440px; height: 104px; padding-top: 20px; padding-bottom: 19px; padding-left: 482px; padding-right: 482px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid; flex-direction: column; justify-content: center; align-items: center; gap: 8px; display: inline-flex">
+            <div class="CreatedBySarahHennessyFromTheUscBrainAndMusicLab2023LosAngelesCaLastUpdatedMmDdYyyy" style="text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2023 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
+            <div class="CiteThisTool" style="width: 99px; height: 19px; justify-content: center; align-items: center; display: inline-flex">
+              <div class="CiteThisTool" style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha256-tG5mcZUtJsZvyKAxYLVXrmjKBVLd6VpVccqz/r4ypFE=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+    <script src="main.js"></script>
+    <script>
+        function updateAllSliders(value) {
+            // Update the output for the general slider
+            document.getElementById('generalSliderOutput').value = value;
+
+            // Update each individual slider
+            let sliders = document.querySelectorAll('.sync-slider');
+            sliders.forEach(slider => {
+                slider.value = value;
+
+                // Update the corresponding output for each slider
+                let outputId = slider.getAttribute('data-output');
+                if (outputId) {
+                    document.getElementById(outputId).value = value;
+                }
+            });
+        }
+        
+        window.onload = function() {
+            let initialValue = 0.15; // Default value
+            document.getElementById('general_slider').value = initialValue;
+            updateAllSliders(initialValue);
+        };
+    </script>
+</body>
+</html>
