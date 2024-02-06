@@ -93,6 +93,13 @@ app.post('/upload', upload.single('fileInput'), (req, res) => {
 
 });
 
+app.post('/multiprocess', (req, res) => {
+    console.log("multiprocess");
+    const data = req.body.data;
+    console.log(data);
+
+})
+
 
 var token;  
 const clientID = 'e6f9d062524b4bbc91e48d1f62f5bee7';

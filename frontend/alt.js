@@ -1,4 +1,4 @@
-const { getSystemErrorMap } = require("util");
+
 
 function updateAllSliders(value) {
     console.log("this chill");
@@ -40,5 +40,42 @@ window.onload = function() {
 };
 
 
+//upload file ("returns" responseData in object type)
+document.querySelector('#upload_check').addEventListener('click', async(e) => {
+    e.preventDefault();
+    console.log("checking alt file");
+    const formData = new FormData();
+    formData.append('fileInput', document.querySelector('#input_file').files[0]);
+
+    try {
+        const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (!response.ok) throw new Error('File upload failed.');
+
+        const responseData = await response.json();
+        console.log(responseData.data);
+
+        
+        await fetch('/multiprocess', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' // This line is crucial
+            },
+            body: responseData
+        });
+
+
+        
+
+
+    } catch (error) {
+        console.error(error);
+    } finally {}
+
+
+})
 
 
