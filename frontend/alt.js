@@ -40,6 +40,9 @@ window.onload = function() {
 };
 
 
+var song_list = {};
+var delta_list = {};
+
 //upload file ("returns" responseData in object type)
 document.querySelector('#upload_check').addEventListener('click', async(e) => {
     e.preventDefault();
@@ -58,23 +61,34 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
         const responseData = await response.json();
         console.log(responseData.data);
 
+        song_list = responseData.data;
+        console.log("song list: ");
+        console.log(song_list);
         
-        await fetch('/multiprocess', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json' // This line is crucial
-            },
-            body: JSON.stringify({responseData})
-        });
-
-
         
-
+        
 
     } catch (error) {
         console.error(error);
     } finally {}
 
+
+})
+
+document.querySelector('#btn_next').addEventListener('click', async(e) => {
+    e.preventDefault();
+    console.log("in btn_next");
+    console.log(song_list);
+    const response = await fetch('/multiprocess', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json' // This line is crucial
+        },
+        body: JSON.stringify({song_list: song_list})
+    });
+    console.log("done");
+
+    window.location.href = '/exit';
 
 })
 

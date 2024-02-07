@@ -95,8 +95,9 @@ app.post('/upload', upload.single('fileInput'), (req, res) => {
 
 app.post('/multiprocess', (req, res) => {
     console.log("multiprocess");
-    const data = req.body.data;
-    console.log(data);
+    const song_list = req.body.song_list;
+    console.log(song_list);
+    res.json({success: true});
 
 })
 
