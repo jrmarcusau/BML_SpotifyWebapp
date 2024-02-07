@@ -64,7 +64,7 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
             headers: {
                 'Content-Type': 'application/json' // This line is crucial
             },
-            body: responseData
+            body: JSON.stringify({responseData})
         });
 
 
