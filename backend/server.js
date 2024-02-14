@@ -38,6 +38,10 @@ app.get('/main', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/index.html'));
 });
 
+app.get('/about', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/about.html'));
+})
+
 app.get('/alt', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/alt.html'));
 })
@@ -378,6 +382,8 @@ async function createRawData(data) {
     var instrumentalness = [];
     var liveness = [];
     var loudness = [];
+    var popularity = [];
+    var releasedate = [];
     var speechines = [];
     var tempo = [];
 
@@ -395,6 +401,8 @@ async function createRawData(data) {
         instrumentalness.push(features.instrumentalness);
         liveness.push(features.liveness);
         loudness.push(features.loudness);
+        popularity.push(features.popularity);
+        releasedate.push(features.releasedate);
         speechines.push(features.speechines);
         tempo.push(features.tempo);
 
@@ -418,6 +426,8 @@ async function createRawData(data) {
             instrumentalness: instrumentalness[i],
             liveness: liveness[i],
             loudness: loudness[i],
+            popularity: popularity[i],
+            releasedate: releasedate[i],
             speechines: speechines[i],
             tempo: tempo[i],
             
