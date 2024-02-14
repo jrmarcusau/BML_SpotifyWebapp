@@ -409,7 +409,8 @@ const APPController = (function(UICtrl) {
             },
             body: JSON.stringify({
                 songId1: songId,
-                features: songFeatures
+                features: songFeatures,
+                orig: songData1.origFeatures
             })
         });
         data = response.json();

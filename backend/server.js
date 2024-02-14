@@ -109,7 +109,7 @@ app.post('/multiprocess', async (req, res) => {
         var songId = songInfo.tracks.items[0].id;
         origInfo.song = songInfo.tracks.items[0].name;
         origInfo.artist = songInfo.tracks.items[0].artists[0].name;
-        var origFeatures = await getFeatures(token, songId);
+        origFeatures = await getFeatures(token, songId);
         var adjFeatures = await adjustFeatures(origFeatures, delta_list);
         var result = await getRecs(token, songId, adjFeatures);
         var reser = await recommendationSnapshot();
@@ -324,9 +324,11 @@ const getRecs = async(token, songId1, features) => {
     return data;
 }
 
+origFeatures = {}; //eventually encase all orig in single json
 app.post('/api/getRecs', async (req, res) => {
     const songId1 = req.body.songId1; //70LcF31zb1H0PyJoS1Sx1r
     const features = req.body.features; //{minEn, maxEn, ..., pop}
+    origFeatures = req.body.orig;
     const recs = await getRecs(token, songId1, features);
     res.json(recs);
     recommendationSnapshot();
@@ -411,6 +413,25 @@ async function createRawData(data) {
 
     //actual table
     const raw_data = [];
+    //0
+    raw_data.push({
+        origSong: origInfo.song,
+        origArtist: origInfo.artist,
+        recNumber: 0,
+        song: origInfo.song,
+        artist: origInfo.artist,
+        energy: origFeatures.energy,
+        valence: origFeatures.valence,
+        acousticness: origFeatures.acousticness,
+        danceability: origFeatures.danceability,
+        instrumentalness: origFeatures.instrumentalness,
+        liveness: origFeatures.liveness,
+        loudness: origFeatures.loudness,
+        popularity: origFeatures.popularity,
+        releasedate: origFeatures.releasedate,
+        speechines: origFeatures.speechines,
+        tempo: origFeatures.tempo,
+    })
     for (let i = 0; i < data.tracks.length; i++) {
         raw_data.push({
             
