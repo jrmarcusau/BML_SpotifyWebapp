@@ -93,12 +93,36 @@ app.post('/upload', upload.single('fileInput'), (req, res) => {
 
 });
 
-app.post('/multiprocess', (req, res) => {
+app.post('/multiprocess', async (req, res) => {
+    console.log("===========================")
     console.log("multiprocess");
     const song_list = req.body.song_list;
+    const delta_list = req.body.delta_list;
     console.log(song_list);
-    res.json({success: true});
+    console.log(delta_list);
+    //process delta_list to features
 
+    for (let i = 0; i < song_list.length; i++) {
+        let song = song_list[i];
+        console.log("song.name: " + song.name);
+        console.log("song.artist: " + song.artist);
+        var songInfo = await checkSongArtist(token, song.name, song.artist);
+        console.log(songInfo);
+        var songId = songInfo.tracks.items[0].id;
+        console.log(songInfo.tracks.items[0]);
+        origInfo.song = songInfo.tracks.items[0].name;
+        origInfo.artist = songInfo.tracks.items[0].artists[0].name;
+        console.log("songId: " + songId);
+        var origFeatures = await getFeatures(token, songId);
+        console.log(origFeatures);
+        var adjFeatures = await adjustFeatures(origFeatures, delta_list);
+        console.log(adjFeatures);
+        var result = await getRecs(token, songId, adjFeatures);
+        var reser = await recommendationSnapshot();
+    }
+
+    console.log("done multiprocess");
+    res.json({success: true});
 })
 
 
@@ -209,6 +233,7 @@ app.get('/callback', function(req, res) {
     }
 });
 
+
 const getToken = async () => {
 
     const result = await fetch(`https://accounts.spotify.com/api/token`, {
@@ -238,7 +263,6 @@ const checkSongArtist = async(token, song, artist) => {
         headers: {'Authorization' : `Bearer ${token}`}
     });
     const data = await result.json();
-    console.log(data);
     //check min_pop = 80
     return data;
 }
@@ -274,11 +298,11 @@ app.post('/api/getFeatures', async (req, res) => {
 
 const adjustFeatures = (origFeatures, offset) => {
     adjData = {};
-
-    adjData.minEn = Math.max(origFeatures.energy - offset.energy, 0.01);
-    adjData.maxEn = Math.min(origFeatures.energy + offset.energy, 0.99);
-    adjData.minVal = Math.max(origFeatures.valence - offset.valence, 0.01);
-    adjData.maxVal = Math.min(origFeatures.valence + offset.valence, 0.99);
+    console.log("adjustdata");
+    adjData.minEn = parseFloat((Math.max(origFeatures.energy - offset.energy, 0.01)).toFixed(2));
+    adjData.maxEn = parseFloat((Math.min(origFeatures.energy + offset.energy, 0.99)).toFixed(2));
+    adjData.minVal = parseFloat((Math.max(origFeatures.valence - offset.valence, 0.01)).toFixed(2));
+    adjData.maxVal = parseFloat((Math.min(origFeatures.valence + offset.valence, 0.99)).toFixed(2));
     adjData.pop = 80;
 
     return adjData;
@@ -308,13 +332,12 @@ const getRecs = async(token, songId1, features) => {
     });
     const data = await result.json();
     recData = data;
-
     return data;
 }
 
 app.post('/api/getRecs', async (req, res) => {
-    const songId1 = req.body.songId1;
-    const features = req.body.features;
+    const songId1 = req.body.songId1; //70LcF31zb1H0PyJoS1Sx1r
+    const features = req.body.features; //{minEn, maxEn, ..., pop}
     const recs = await getRecs(token, songId1, features);
     res.json(recs);
     recommendationSnapshot();
@@ -423,14 +446,8 @@ async function createRawData(data) {
 async function recommendationSnapshot() {
     console.log("snapshotting");
     const raw_data = await createRawData(recData);
-    console.log("raw data: ");
     console.log(raw_data);
-
-    console.log(raw_data);
-
     const data = Papa.unparse(raw_data);
-    console.log("fixed data");
-    console.log(data);
     tableData.push(raw_data);
 }
 
@@ -482,7 +499,6 @@ app.get('/sample-download/csv', async(req, res) => {
 app.get('/end-download/csv', async (req, res) => {
 
     console.log("/end-download/csv");
-    console.log(tableData);
     var flattenedData = tableData.flat();
     const data = Papa.unparse(flattenedData);
     const csvFilename = `data-${Date.now()}.csv`;

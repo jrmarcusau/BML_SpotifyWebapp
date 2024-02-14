@@ -75,17 +75,40 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
 
 })
 
+
+
 document.querySelector('#btn_next').addEventListener('click', async(e) => {
     e.preventDefault();
     console.log("in btn_next");
     console.log(song_list);
+
+    //delta list --fix to use features
+    delta_list = {
+        acousticness: parseFloat(document.querySelector('#delta_acousticness').value),
+        danceability: parseFloat(document.querySelector('#delta_danceability').value),
+        energy: parseFloat(document.querySelector('#delta_energy').value),
+        instrumentalness: parseFloat(document.querySelector('#delta_instrumentalness').value),
+        liveness: parseFloat(document.querySelector('#delta_liveness').value),
+        loudness: parseFloat(document.querySelector('#delta_loudness').value),
+        speechiness: parseFloat(document.querySelector('#delta_speechiness').value),
+        tempo: parseFloat(document.querySelector('#delta_tempo').value),
+        valence: parseFloat(document.querySelector('#delta_valence').value)
+    }
+
+    console.log("delta_list:");
+    console.log(delta_list);
+
     const response = await fetch('/multiprocess', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json' // This line is crucial
         },
-        body: JSON.stringify({song_list: song_list})
+        body: JSON.stringify({
+            song_list: song_list,
+            delta_list: delta_list
+        })
     });
+
     console.log("done");
 
     window.location.href = '/exit';
