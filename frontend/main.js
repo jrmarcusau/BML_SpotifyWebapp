@@ -28,6 +28,8 @@ const UIController = (function() {
             deltaInstrumentalness: '#delta_instrumentalness',
             deltaLiveness: '#delta_liveness',
             deltaLoudness: '#delta_loudness',
+            deltaPopularity: '#delta_popularity',
+            deltaReleaseDate: '#delta_releasedate',
             deltaSpeechiness: '#delta_speechiness',
             deltaTempo: '#delta_tempo',
             deltaValence: '#delta_valence',
@@ -40,6 +42,8 @@ const UIController = (function() {
             useInstrumentalness: '#use_instrumentalness',
             useLiveness: '#use_liveness',
             useLoudness:  '#use_loudness',
+            usePopularity: '#use_popularity',
+            useReleaseDate: '#use_releasedate',
             useSpeechiness:  '#use_speechiness',
             useTempo:  '#use_tempo',
             useValence:  '#use_valence',
@@ -69,6 +73,8 @@ const UIController = (function() {
                     deltaInstrumentalness: document.querySelector(DOMElements.features.deltaInstrumentalness),
                     deltaLiveness: document.querySelector(DOMElements.features.deltaLiveness),
                     deltaLoudness: document.querySelector(DOMElements.features.deltaLoudness),
+                    deltaPopularity: document.querySelector(DOMElements.features.deltaPopularity),
+                    deltaReleaseDate: document.querySelector(DOMElements.features.deltaReleaseDate),
                     deltaSpeechiness: document.querySelector(DOMElements.features.deltaSpeechiness),
                     deltaTempo: document.querySelector(DOMElements.features.deltaTempo),
                     deltaValence: document.querySelector(DOMElements.features.deltaValence),
@@ -80,6 +86,8 @@ const UIController = (function() {
                     deltaInstrumentalness: document.querySelector(DOMElements.features.deltaInstrumentalness),
                     deltaLiveness: document.querySelector(DOMElements.features.deltaLiveness),
                     deltaLoudness: document.querySelector(DOMElements.features.deltaLoudness),
+                    deltaPopularity: document.querySelector(DOMElements.features.deltaPopularity),
+                    deltaReleaseDate: document.querySelector(DOMElements.features.deltaReleaseDate),
                     deltaSpeechiness: document.querySelector(DOMElements.features.deltaSpeechiness),
                     deltaTempo: document.querySelector(DOMElements.features.deltaTempo),
                     deltaValence: document.querySelector(DOMElements.features.deltaValence),
@@ -196,6 +204,8 @@ const UIController = (function() {
                 deltaInstrumentalness: 0.15,
                 deltaLiveness: 0.15,
                 deltaLoudness: 3,
+                deltaPopularity: 80,
+                deltaReleaseDate: 2010,
                 deltaSpeechiness: 0.15,
                 deltaTempo: 60,
                 deltaValence: 0.15,
@@ -250,6 +260,8 @@ const APPController = (function(UICtrl) {
         instrumentalness: 0.15,
         liveness: 0.15,
         loudness: 3,
+        popularity: 80,
+        releasedate: 2010,
         speechiness: 0.15,
         tempo: 60,
         // any additional features should be initialized here
@@ -434,6 +446,12 @@ const APPController = (function(UICtrl) {
         }
         if (UICtrl.inputField().features.deltaLoudness.value != '') {
             deltaFeatures.loudness = parseFloat(UICtrl.inputField().features.deltaLoudness.value);
+        }
+        if (UICtrl.inputField().features.deltaPopularity.value != '') {
+            deltaFeatures.popularity = parseFloat(UICtrl.inputField().features.deltaPopularity.value);
+        }
+        if (UICtrl.inputField().features.deltaReleaseDate.value != '') {
+            deltaFeatures.releasedate = parseFloat(UICtrl.inputField().features.deltaReleaseDate.value);
         }
         if (UICtrl.inputField().features.deltaSpeechiness.value != '') {
             deltaFeatures.speechiness = parseFloat(UICtrl.inputField().features.deltaSpeechiness.value);

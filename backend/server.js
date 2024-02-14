@@ -94,29 +94,19 @@ app.post('/upload', upload.single('fileInput'), (req, res) => {
 });
 
 app.post('/multiprocess', async (req, res) => {
-    console.log("===========================")
     console.log("multiprocess");
     const song_list = req.body.song_list;
     const delta_list = req.body.delta_list;
-    console.log(song_list);
-    console.log(delta_list);
     //process delta_list to features
 
     for (let i = 0; i < song_list.length; i++) {
         let song = song_list[i];
-        console.log("song.name: " + song.name);
-        console.log("song.artist: " + song.artist);
         var songInfo = await checkSongArtist(token, song.name, song.artist);
-        console.log(songInfo);
         var songId = songInfo.tracks.items[0].id;
-        console.log(songInfo.tracks.items[0]);
         origInfo.song = songInfo.tracks.items[0].name;
         origInfo.artist = songInfo.tracks.items[0].artists[0].name;
-        console.log("songId: " + songId);
         var origFeatures = await getFeatures(token, songId);
-        console.log(origFeatures);
         var adjFeatures = await adjustFeatures(origFeatures, delta_list);
-        console.log(adjFeatures);
         var result = await getRecs(token, songId, adjFeatures);
         var reser = await recommendationSnapshot();
     }
@@ -197,7 +187,6 @@ app.get('/callback', function(req, res) {
       
                 var access_token = body.access_token;
                 token = access_token;
-                console.log(token);
                 var refresh_token = body.refresh_token;
       
                 var options = {
@@ -208,7 +197,6 @@ app.get('/callback', function(req, res) {
       
                 // use the access token to access the Spotify Web API
                 request.get(options, function(error, response, body) {
-                    console.log(body);
                     res.redirect('/main');
                 }) ;
       
@@ -273,9 +261,7 @@ app.post('/api/checkSongArtist', async (req, res) => {
     const artist = req.body.artist;
     origInfo.song = song;
     origInfo.artist = artist;
-    console.log("before check song artist");
     const songData = await checkSongArtist(token, song, artist);
-    console.log("before check song artist");
     res.json(songData);
 })
 
@@ -298,7 +284,6 @@ app.post('/api/getFeatures', async (req, res) => {
 
 const adjustFeatures = (origFeatures, offset) => {
     adjData = {};
-    console.log("adjustdata");
     adjData.minEn = parseFloat((Math.max(origFeatures.energy - offset.energy, 0.01)).toFixed(2));
     adjData.maxEn = parseFloat((Math.min(origFeatures.energy + offset.energy, 0.99)).toFixed(2));
     adjData.minVal = parseFloat((Math.max(origFeatures.valence - offset.valence, 0.01)).toFixed(2));
@@ -346,7 +331,6 @@ app.post('/api/getRecs', async (req, res) => {
 
 
 const getRec = async(token, recEndPoint) => {
-    console.log(recEndPoint);
     const result = await fetch(`${recEndPoint}`, {
         method: 'GET',
         headers: { 'Authorization' : `Bearer ${token}`}
@@ -446,7 +430,6 @@ async function createRawData(data) {
 async function recommendationSnapshot() {
     console.log("snapshotting");
     const raw_data = await createRawData(recData);
-    console.log(raw_data);
     const data = Papa.unparse(raw_data);
     tableData.push(raw_data);
 }
@@ -460,10 +443,7 @@ app.get('/generate-and-download/csv', async (req, res) => {
     ];*/
 
     const raw_data = await createRawData(recData);
-    console.log("raw data: ");
     const data = Papa.unparse(raw_data);
-    console.log("fixed data");
-    console.log(data);
 
     const csvFileName = `data-${Date.now()}.csv`;
     const csvFilePath = path.join(__dirname, csvFileName);

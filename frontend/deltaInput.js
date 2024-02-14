@@ -26,8 +26,10 @@ function checkboxChanged(checkbox) {
 
     if (checkbox.checked) {
         slider.classList.add('slider2');  // Change to gray when checked
+        slider.classList.add('sync-slider');
     } else {
         slider.classList.remove("slider2");
+        slider.classList.remove('sync-slider');
     }
 }
 

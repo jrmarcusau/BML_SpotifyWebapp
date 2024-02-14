@@ -1,3 +1,4 @@
+const { parse } = require("path");
 
 
 function updateAllSliders(value) {
@@ -26,8 +27,10 @@ function checkboxChanged(checkbox) {
 
     if (checkbox.checked) {
         slider.classList.add('slider2');  // Change to gray when checked
+        slider.classList.add('sync-slider');
     } else {
         slider.classList.remove("slider2");
+        slider.classList.remove('sync-slider');
     }
 }
 
@@ -90,6 +93,8 @@ document.querySelector('#btn_next').addEventListener('click', async(e) => {
         instrumentalness: parseFloat(document.querySelector('#delta_instrumentalness').value),
         liveness: parseFloat(document.querySelector('#delta_liveness').value),
         loudness: parseFloat(document.querySelector('#delta_loudness').value),
+        popularity: parseFloat(document.querySelector('#delta_popularity').value),
+        releasedate: parseFloat(document.querySelector('#delta_releasedate').value),
         speechiness: parseFloat(document.querySelector('#delta_speechiness').value),
         tempo: parseFloat(document.querySelector('#delta_tempo').value),
         valence: parseFloat(document.querySelector('#delta_valence').value)
