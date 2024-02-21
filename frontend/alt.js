@@ -1,4 +1,3 @@
-const { parse } = require("path");
 
 
 function updateAllSliders(value) {

@@ -1,4 +1,4 @@
-const { getSystemErrorMap } = require("util");
+
 
 function updateAllSliders(value) {
     console.log("this chill");
@@ -41,3 +41,32 @@ window.onload = function() {
     updateAllSliders(initialValue);
 };
 
+
+document.getElementById('info-button').addEventListener('click', async(event) => {
+    event.preventDefault();
+    console.log("info!");
+
+    const html = 
+        `<div id="info-popup" class="info-popup-delta">
+            <h4>What do these features mean?</h4>
+            <p>To see individual descriptions of these features, click the name.</p>
+            <p>https//developer.spotify.com/documentation/web-api/
+                    reference/get-recommendations</p>
+            <button id="info-x" class="info-x">x</button>
+        </div>`
+    
+    document.querySelector('#info-popup-border').insertAdjacentHTML('beforeend', html);
+})
+
+document.body.addEventListener('click', function(event) {
+    // Check if the clicked element is the button
+    //event.preventDefault();
+    
+    console.log("clicky");
+
+    if (event.target.id === 'info-x') {
+        console.log("x-spec");
+        document.querySelector('#info-popup').remove(); // This removes the popup element itself
+    }
+    
+});
