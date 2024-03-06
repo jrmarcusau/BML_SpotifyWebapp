@@ -7,7 +7,7 @@ document.getElementById('btn_login').addEventListener('click', async (event) => 
 document.getElementById('btn_continue').addEventListener('click', async(event) => {
     event.preventDefault();
     console.log("continuing");
-    window.location.href = "/main";
+    window.location.href = "/choice";
 })
 
 document.getElementById('btn_continue2').addEventListener('click', async(event) => {

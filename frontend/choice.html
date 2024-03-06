@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!--
+    <div class="col-sm-6 row form-group px-0">
+        <button type="check" id="btn_login" class="btn btn-success col-sm-12">Login</button>
+    </div>
+    
+
+    <div class="col-sm-6 row form-group px-0">
+        <button id="btn_continue" class="col-sm-12">go to main</button>
+    </div>
+    -->
+    <div class="Header" style="width: 100%; height: 80px; padding-left: 24px; padding-right: 24px; padding-top: 18px; padding-bottom: 18px; background: #95B7D0; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); justify-content: center; align-items: center; gap: 1256px; display: inline-flex">
+        <div class="MusicMusicListFilled" style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+            
+            <img src="music-dropdown.png" alt="dropdown" style="width: 29.17px; height: 25.83px; background: #33333300"></img>
+        </div>
+        
+        <button class="About" id="about" style="width: 96px; height: 44px; padding-top: 8px; padding-bottom: 7px; padding-left: 13px; padding-right: 14px; justify-content: center; align-items: center; display: inline-flex">
+            <div class="About" style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">About</div>
+        </button>
+    </div>
+
+
+    <div style="width: 100%; height: 100%; position: relative; background: #FAFAFA">
+        <div style="left: 434px; top: 100px; position: absolute; color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">How would you like to import your seed song(s)?</div>
+        <div style="padding-top: 2px; padding-bottom: 2px; padding-right: 14px; left: 701px; top: 550px; position: absolute; transform: rotate(-90deg); transform-origin: 0 0; justify-content: flex-start; align-items: center; gap: 40px; display: inline-flex">
+            <div style="width: 120px; height: 0px; border: 1px #95B7D0 solid"></div>
+            <div style="transform: rotate(90deg); transform-origin: 0 0; color: #333333; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 400; word-wrap: break-word">OR</div>
+            <div style="width: 120px; height: 0px; border: 1px #95B7D0 solid"></div>
+        </div>
+        <div style="width: 409px; height: 86px; left: 153px; top: 400px; position: absolute; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">If you choose to enter your seed song(s) manually, a pop up will ensure that the intended song is used. You will be able to adjust the desired musical features after confirming the song.</div>
+        <div style="width: 405px; height: 92px; left: 899px; top: 400px; position: absolute; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">If you choose to enter your seed song(s) via spreadsheet, please download the template spreadsheet and then format your songs accordingly. You will be able to adjust the desired musical features after uploading the spreadsheet.</div>
+        <button id="btn_manual" class="btn-continue" style="width: 240px; height: 48px; padding-left: 56px; padding-right: 56px; padding-top: 14px; padding-bottom: 14px; left: 232px; top: 300px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">enter manually</div>
+            <div style="width: 22px; height: 9px; position: relative">
+                <div style="width: 22px; height: 0px; left: 0px; top: 4.25px; position: absolute; border: 3px #333333 solid"></div>
+                <div style="width: 4px; height: 9px; left: 18px; top: 0px; position: absolute; border-radius: 1px; border: 3px #333333 solid"></div>
+            </div>
+        </button>
+        <button id="btn_spreadsheet" class="btn-continue" style="width: 256px; height: 48px; padding-left: 56px; padding-right: 56px; padding-top: 14px; padding-bottom: 14px; left: 952px; top: 300px; position: absolute; justify-content: center; align-items: center; gap: 10px; display: inline-flex">
+            <div style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">via spreadsheet</div>
+            <div style="width: 22px; height: 9px; position: relative">
+                <div style="width: 22px; height: 0px; left: 0px; top: 4.25px; position: absolute; border: 3px #333333 solid"></div>
+                <div style="width: 4px; height: 9px; left: 18px; top: 0px; position: absolute; border-radius: 1px; border: 3px #333333 solid"></div>
+            </button>
+        </div>
+        <div style="width: 979px; height: 87px; padding-top: 6px; padding-bottom: 5px; padding-left: 60px; padding-right: 60px; left: 230px; top: 140px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+            <div style="width: 859px; height: 76px; text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">To begin the song matching process, you can either manually input a song & artist, or you can upload a file. Please select one of these options to continue.</div>
+        </div>
+    </div>
+
+    <div class="Footer" style="width: 1440px; height: 104px; left: 0px; top: 920px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid">
+        <div class="CreatedBySarahHennessyFromTheUscBrainAndMusicLab2024LosAngelesCaLastUpdatedMmDdYyyy" style="left: 482px; top: 20px; position: absolute; text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab. This is a personal project on Spotify's public APIs and does not represent Spotify.<br/>2024 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
+        <div class="CiteThisTool" style="width: 99px; height: 19px; left: 670px; top: 66px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+            <div class="CiteThisTool" style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
+        </div>
+        <div class="BaseBug" style="width: 24px; height: 24px; left: 1400px; top: 62px; position: absolute">
+            <div class="Vector" style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #656986"></div>
+        </div>
+    </div>
+
+
+
+</body>
+
+
+
+<script src="choice.js"></script>
+<script src="about.js"></script>
+
+</html>

@@ -50,6 +50,11 @@ app.get('/loginpage', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/login.html'));
 });
 
+
+app.get('/choice', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/choice.html'))
+})
+
 // Exit page route
 app.get('/exit', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/exit.html'))
