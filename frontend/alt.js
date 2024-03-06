@@ -74,8 +74,28 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
         console.error(error);
     } finally {}
 
+    const html = 
+        `<div class="check-background">
+            <h4>Careful!</h4>
+            <p>Add a pop up box that they have to read and then X out of that tells them to go check the input songs on the output sheet. And also tells them that the songs will be matched the same across all the songs in the file</p>
+            <button id="info-x" class="info-x">x</button>
+        </div>`;
+    document.querySelector('#upload').insertAdjacentHTML('beforeend', html);
 
 })
+
+document.body.addEventListener('click', function(event) {
+    // Check if the clicked element is the button
+    //event.preventDefault();
+    
+    console.log("clicky");
+
+    if (event.target.id === 'info-x') {
+        console.log("x-spec");
+        document.querySelector('#check-background').remove(); // This removes the popup element itself
+    }
+    
+});
 
 
 
