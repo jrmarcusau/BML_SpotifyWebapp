@@ -10,11 +10,6 @@ document.getElementById('btn_continue').addEventListener('click', async(event) =
     window.location.href = "/choice";
 })
 
-document.getElementById('btn_continue2').addEventListener('click', async(event) => {
-    event.preventDefault();
-    console.log("continuing 2");
-    window.location.href = "/alt";
-})
 
 document.getElementById('info-button').addEventListener('click', async(event) => {
     event.preventDefault();

@@ -116,7 +116,7 @@ app.post('/multiprocess', async (req, res) => {
         origInfo.artist = songInfo.tracks.items[0].artists[0].name;
         origFeatures = await getFeatures(token, songId);
         var adjFeatures = await adjustFeatures(origFeatures, delta_list);
-        var result = await getRecs(token, songId, adjFeatures);
+        var result = await getRecs(token, songId, adjFeatures, delta_list.numResults);
         var reser = await recommendationSnapshot();
     }
 
@@ -312,8 +312,9 @@ app.post('/api/adjustFeatures', async (req, res) => {
 
 var recData = {};
 var origInfo = {};
-const getRecs = async(token, songId1, features) => {
-    const limit = 10;
+const getRecs = async(token, songId1, features, numResults) => {
+    console.log(numResults);
+    const limit = numResults;
 
     const seedTracks = [songId1]; // An array of multiple seed track IDs
     const seedTracksString = seedTracks.join(',');
@@ -334,7 +335,7 @@ app.post('/api/getRecs', async (req, res) => {
     const songId1 = req.body.songId1; //70LcF31zb1H0PyJoS1Sx1r
     const features = req.body.features; //{minEn, maxEn, ..., pop}
     origFeatures = req.body.orig;
-    const recs = await getRecs(token, songId1, features);
+    const recs = await getRecs(token, songId1, features, 10);
     res.json(recs);
     recommendationSnapshot();
 

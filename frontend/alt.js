@@ -48,6 +48,15 @@ var delta_list = {};
 //upload file ("returns" responseData in object type)
 document.querySelector('#upload_check').addEventListener('click', async(e) => {
     e.preventDefault();
+    const html = 
+        `<div id="check-background" class="check-background">
+            <h4>Careful!</h4>
+            <p>Add a pop up box that they have to read and then X out of that tells them to go check the input songs on the output sheet. And also tells them that the songs will be matched the same across all the songs in the file</p>
+            <button id="info-x" class="info-x">x</button>
+        </div>`;
+    document.querySelector('#upload').insertAdjacentHTML('beforeend', html);
+    
+    
     console.log("checking alt file");
     const formData = new FormData();
     formData.append('fileInput', document.querySelector('#input_file').files[0]);
@@ -67,20 +76,12 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
         console.log("song list: ");
         console.log(song_list);
         
-        
-        
 
     } catch (error) {
         console.error(error);
     } finally {}
 
-    const html = 
-        `<div class="check-background">
-            <h4>Careful!</h4>
-            <p>Add a pop up box that they have to read and then X out of that tells them to go check the input songs on the output sheet. And also tells them that the songs will be matched the same across all the songs in the file</p>
-            <button id="info-x" class="info-x">x</button>
-        </div>`;
-    document.querySelector('#upload').insertAdjacentHTML('beforeend', html);
+    
 
 })
 
@@ -103,6 +104,10 @@ document.querySelector('#btn_next').addEventListener('click', async(e) => {
     e.preventDefault();
     console.log("in btn_next");
     console.log(song_list);
+    console.log(delta_list);
+
+    const numberOfResults = document.getElementById('numResults').value;
+    localStorage.setItem('numberOfResults', numberOfResults);
 
     //delta list --fix to use features
     delta_list = {
@@ -116,11 +121,14 @@ document.querySelector('#btn_next').addEventListener('click', async(e) => {
         releasedate: parseFloat(document.querySelector('#delta_releasedate').value),
         speechiness: parseFloat(document.querySelector('#delta_speechiness').value),
         tempo: parseFloat(document.querySelector('#delta_tempo').value),
-        valence: parseFloat(document.querySelector('#delta_valence').value)
+        valence: parseFloat(document.querySelector('#delta_valence').value),
+        numResults: numberOfResults
     }
 
     console.log("delta_list:");
     console.log(delta_list);
+
+    
 
     const response = await fetch('/multiprocess', {
         method: 'POST',
@@ -129,7 +137,7 @@ document.querySelector('#btn_next').addEventListener('click', async(e) => {
         },
         body: JSON.stringify({
             song_list: song_list,
-            delta_list: delta_list
+            delta_list: delta_list,
         })
     });
 
