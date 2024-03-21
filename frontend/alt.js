@@ -5,6 +5,7 @@ function updateAllSliders(value) {
     // Update the output for the general slider
     document.getElementById('generalSliderOutput').value = value;
 
+
     // Update each individual slider
     let sliders = document.querySelectorAll('.sync-slider');
     sliders.forEach(slider => {
@@ -12,9 +13,23 @@ function updateAllSliders(value) {
         //slider.classList.add('slider2'); THIS WORKS
 
         // Update the corresponding output for each slider
-        let outputId = slider.getAttribute('data-output');
+        let outputId = slider.getAttribute('delta-output');
         if (outputId) {
             document.getElementById(outputId).value = value;
+        }
+    });
+
+    //make sure value moves
+    document.querySelectorAll('.slider-color').forEach(slider => {
+        const baseId = slider.id.substring(6); // Extract the part of the ID after 'delta_'
+        const featureName = baseId.charAt(0).toUpperCase() + baseId.slice(1); // Capitalize the first letter
+        const outputId = 'delta' + featureName + 'Output';
+        
+        const outputElement = document.getElementById(outputId);
+        if (outputElement) {
+            outputElement.value = slider.value;
+            // If you also need to update the visual display of the <output> element:
+            outputElement.textContent = slider.value;
         }
     });
 }

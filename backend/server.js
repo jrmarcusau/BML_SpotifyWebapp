@@ -383,6 +383,7 @@ async function createRawData(data) {
     var index = [];
     var songs = [];
     var artists = [];
+    var uris = [];
     var energy = [];
     var valence = [];
     var acousticness = [];
@@ -398,9 +399,11 @@ async function createRawData(data) {
     
 
     for (let i = 0; i < data.tracks.length; i++) {
+        console.log(data.tracks[i]);
         index.push(i+1);
         songs.push(data.tracks[i].name);
         artists.push(data.tracks[i].artists[0].name);
+        uris.push(data.tracks[i].href);
         const features = await getFeatures(token, data.tracks[i].id);
         energy.push(features.energy);
         valence.push(features.valence);
@@ -424,6 +427,7 @@ async function createRawData(data) {
         origSong: origInfo.song,
         origArtist: origInfo.artist,
         recNumber: 0,
+        uri: 0,
         song: origInfo.song,
         artist: origInfo.artist,
         energy: origFeatures.energy,
@@ -446,6 +450,7 @@ async function createRawData(data) {
             recNumber: index[i],
             song: data.tracks[i].name,
             artist: data.tracks[i].artists[0].name,
+            uri: data.tracks[i].href,
             energy: energy[i],
             valence: valence[i],
             acousticness: acousticness[i],
@@ -514,6 +519,9 @@ app.get('/sample-download/csv', async(req, res) => {
 
 // generate csv
 app.get('/end-download/csv', async (req, res) => {
+
+//put in this format: https://open.spotify.com/embed/track/6lanRgr6wXibZr8KgzXxBl
+//download playlist spreadsheet somewhere else different butoon
 
     console.log("/end-download/csv");
     var flattenedData = tableData.flat();
