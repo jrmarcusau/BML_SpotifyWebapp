@@ -118,8 +118,6 @@ document.body.addEventListener('click', function(event) {
 document.querySelector('#btn_next').addEventListener('click', async(e) => {
     e.preventDefault();
     console.log("in btn_next");
-    console.log(song_list);
-    console.log(delta_list);
 
     const numberOfResults = document.getElementById('numResults').value;
     localStorage.setItem('numberOfResults', numberOfResults);
@@ -143,7 +141,8 @@ document.querySelector('#btn_next').addEventListener('click', async(e) => {
     console.log("delta_list:");
     console.log(delta_list);
 
-    
+    console.log("song_list");
+    console.log(song_list);
 
     const response = await fetch('/multiprocess', {
         method: 'POST',

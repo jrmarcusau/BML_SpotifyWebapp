@@ -116,6 +116,9 @@ app.post('/multiprocess', async (req, res) => {
     const delta_list = req.body.delta_list;
     //process delta_list to features
 
+    console.log(song_list);
+    console.log(delta_list);
+
     for (let i = 0; i < song_list.length; i++) {
         let song = song_list[i];
         var songInfo = await checkSongArtist(token, song.name, song.artist);
@@ -321,6 +324,7 @@ app.post('/api/adjustFeatures', async (req, res) => {
 var recData = {};
 var origInfo = {};
 const getRecs = async(token, songId1, features, numResults) => {
+    console.log("numresults");
     console.log(numResults);
     const limit = numResults;
 
@@ -334,6 +338,8 @@ const getRecs = async(token, songId1, features, numResults) => {
         headers: { 'Authorization' : `Bearer ${token}`}
     });
     const data = await result.json();
+    console.log("getRecs");
+    console.log(data);
     recData = data;
     return data;
 }
@@ -479,6 +485,7 @@ async function createRawData(data) {
 
 async function recommendationSnapshot() {
     console.log("snapshotting");
+    console.log(recData);
     const raw_data = await createRawData(recData);
     const data = Papa.unparse(raw_data);
     tableData.push(raw_data);
