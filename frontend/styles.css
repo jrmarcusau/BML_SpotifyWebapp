@@ -138,6 +138,12 @@ button {
     
 }
 
+.bupton {
+    position: absolute;
+    left: 0px;
+    top: 450px;
+}
+
 .info-box-delta { /*fix later*/
     width: 350px; 
     height: 200px; 
@@ -365,7 +371,9 @@ h4 {
     flex-shrink: 0;
     align-items: center;
     gap: 16px;
-    position: right;
+    position: absolute;
+    top: 100px;
+    left: 600px;
     /*border: 3px solid #666;*/
 }
 
@@ -467,12 +475,16 @@ input[type="range"] {
     align-items: center;
     gap: 16px;
     border: 1px solid rgba(0, 128, 0, 0);
+    position: absolute;
+    top: 400px;
+    left: 0px;
 }
+
 
 .sampleFile {
     color: #333333; 
     width: 300px;
-    height: 32px;
+    height: 16px;
     background-color: #0099ff00;
     font-size: 16px; 
     font-family: Inter; 
@@ -481,6 +493,10 @@ input[type="range"] {
     text-decoration: underline; 
     word-wrap: break-word;
     cursor: pointer;
+
+    position: absolute;
+    top: 250px;
+    left: 210px;
 }
 
 .upload-check {

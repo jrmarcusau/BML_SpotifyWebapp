@@ -35,22 +35,30 @@
 
             
             <div class="input-container Main">
-
+                
                 <div class="upload" id="upload">
+                    <div style="top: 250px; position: absolute; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">First, download the template:</div>
+                    <div style="top: 300px; position: absolute; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Once you have your spreadsheet filled out per the template, upload the file below.</div>
+                    <div style="top: 100px; position: absolute; color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">Enter your seed song(s) via spreadsheet</div>
+                    <button type="submit" id="upload_check" class="button bupton">Upload</button>
                     <a href="/sample-download/csv" class="sampleFile">SampleFile.xlsx</a>
+
                     <div class="upload-item">
+
                         <label for="fileInput" class="upload-label">Upload File:</label>
                         <!-- <button id="upload-check" class="upload-check">Choose File</button> -->
                         <input type="file" id="input_file" class="form-control form-control-sm input-file" accept=".csv">
-                        
+
                         
                     </div>
+
+
+
 
                     <div id="upload-popup">
                         <!-- popup code in main.js-->
                     </div>
             
-                    <button type="submit" id="upload_check" class="button">Upload</button> <!-- class="btn btn-success"-->
                     
                 </div>
 
@@ -58,37 +66,12 @@
                 <div class="delta-input" id="delta-input">
                     <div class="text">What would you like to match based on?</div>
 
-
-                    <div id="delta-info">
-                        <div class="info-box-delta" id="info-box">
-                            <img src="info.jpg" id="info-button" alt="dropdown" style="width: 27px; height: 23px; background: #33333300; cursor: pointer"></img>
-                            <div id="info-popup-border"></div>
-                        </div>
-                    </div>
-
                     <div class="delta-sliders">
                         <!-- Delta GENERAL -->
                         <div class="deltaItem">
                             <label for="general_slider" class="deltaLabel">General Slider:</label>
                             <input type="range" step="0.01" id="general_slider" class="slider-color" min="0.1" max="0.2" oninput="updateAllSliders(this.value)">
                             <output id="generalSliderOutput" class="delta-output">0.15</output>
-                        </div>
-
-                        <!-- Delta Valence -->
-                        <div class="deltaItem">
-                            <input type="checkbox" id="use_valence" class="checkbox" onchange="checkboxChanged(this)" />
-                            <label for="delta_valence" class="deltaLabel">*Valence:</label>
-                            <input type="range" step="0.01" id="delta_valence"  class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaValenceOutput').value = delta_valence.value">
-                            <output id="deltaValenceOutput" class="delta-output">0.15</output>
-                        </div>
-
-                        <!-- Delta Energy -->
-                        <div class="deltaItem">
-                            <input type="checkbox" id="use_energy" class="checkbox" onchange="checkboxChanged(this)"/>
-
-                            <label for="delta_energy" class="deltaLabel">*Energy:</label>
-                            <input type="range" step="0.01" id="delta_energy"  class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaEnergyOutput').value = delta_energy.value">
-                            <output id="deltaEnergyOutput" class="delta-output">0.15</output>
                         </div>
 
                         <!-- Delta Acousticness (uneven caused by checkmark) yep -->
@@ -108,7 +91,14 @@
                             <output id="deltaDanceabilityOutput" class="delta-output">0.15</output>
                         </div>
 
-                        
+                        <!-- Delta Energy -->
+                        <div class="deltaItem">
+                            <input type="checkbox" id="use_energy" class="checkbox" onchange="checkboxChanged(this)"/>
+
+                            <label for="delta_energy" class="deltaLabel">Energy:</label>
+                            <input type="range" step="0.01" id="delta_energy"  class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaEnergyOutput').value = delta_energy.value">
+                            <output id="deltaEnergyOutput" class="delta-output">0.15</output>
+                        </div>
 
                         <!-- Delta Instrumentalness -->
                         <div class="deltaItem">
