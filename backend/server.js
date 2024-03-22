@@ -42,6 +42,14 @@ app.get('/about', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/about.html'));
 })
 
+app.get('/about1', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/about.html'));
+}) 
+
+app.get('/about2', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/about2.html'));
+}) 
+
 app.get('/alt', (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/alt.html'));
 })

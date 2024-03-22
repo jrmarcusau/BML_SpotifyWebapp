@@ -51,10 +51,10 @@ button {
     height: 80px; 
     left: 0px; 
     bottom: 0px; 
-    top: 920px; 
+    top: 920px;
     position: absolute; 
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
-    border-top: 1px #333333 solid
+    border-top: 1px #333333 solid;
 }
 
 .btn-continue {

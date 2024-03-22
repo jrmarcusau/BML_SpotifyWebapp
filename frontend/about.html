@@ -7,85 +7,96 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="Header" >
-        <div class="MusicMusicListFilled" style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-            
-            <img src="music-dropdown.png" alt="dropdown" style="width: 29.17px; height: 25.83px; background: #33333300"></img>
-        </div>
-        
-        <div class="About" style="width: 96px; height: 44px; padding-top: 8px; padding-bottom: 7px; padding-left: 13px; padding-right: 14px; justify-content: center; align-items: center; display: inline-flex">
-            <div class="About" style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">About</div>
-        </div>
-    </div>
+
     <div class="Main">
+            <div style="width: 100%; height: 100%; position: relative; background: #FAFAFA">
+        <div style="padding: 24px; left: 262px; top: 280px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+            <div style="color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">What does this tool do?</div>
+            <div style="width: 908px; height: 113px"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">This tool utilizes Spotify’s API to find song recommendations for a given, user-inputted “seed” song. From the “seed” song, the tool extracts all of the </span><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Spotify MIR features</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> available. Then, the user selects how they would like their output songs to be matched, and the tool identifies N songs that align with the </span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">user-inputted criteria</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">. The output of this tool is a .csv file that contains the seed song, recommendations, and Spotify MIR features of all songs. The intention of this tool is to allow for greater experimental control for researchers, or to help music listeners find new music that they may enjoy.</span></div>
+        </div>
+        <div style="padding: 24px; left: 262px; top: 478px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+            <div style="color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">Why was this tool created?</div>
+            <div style="width: 908px; height: 189px"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">This tool was originally created for a project investigating music-evoked emotion — specifically, </span><span style="color: #768DA3; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">nostalgia</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">. We aimed to use personalized nostalgic stimuli for each participant, but needed to identify a method of finding musically-matched “control” songs to go along with each personalized nostalgic song. The goal of musically matching songs was to disentangle the effects of the </span><span style="color: #958DB6; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">music-evoked emotion</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> from the effects of lower-level musical features such as tempo, or loudness. We used this tool to identify a set of 10 candidate non-nostalgic songs that we then presented to participants to identify whether they were familiar, or nostalgic. Familiar, non-nostalgic songs were selected as eventual Control songs for the study. <br/><br/>While the creation of this tool was for one particular case, we envision that this tool will be useful for many different cases and research questions involving music, psychology, neuroscience, and computer science.<br/></span></div>
+        </div>
+        <div style="padding: 24px; left: 262px; top: 752px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+            <div style="color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">How do I use this tool?</div>
+            <div style="width: 908px; height: 284px"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">1.  Collect your seed song(s). In original uses of this tool, we collected seed songs from participants, asking them to list songs that made them feel nostalgic. <br/><br/>2.  Decide whether you want to import songs manually or via a spreadsheet.<br/>     a. If manually, type the title and artist of the song into the text box.<br/>     b. If via spreadsheet, download the template spreadsheet and format your list of songs accordingly. Then upload. <br/><br/>3.  Once your songs load, select the musical features that you would like to match based on. For example, perhaps you want to find other songs that were released in the same year as your seed song. Or, maybe you want to find songs that have similar levels of “danceability”. You may select as many criteria as you like. In the original use of this tool, we found that </span><span style="color: #B0C592; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word"><link to paper, once published></span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> matching based on valence, energy, release date, and popularity was sufficient to implicitly match for all other features. <br/><br/>4.  Click next, and download your output .csv file. This file will contain your seed songs and their features, and your recommendations and their features.<br/></span></div>
+        </div>
+        <div style="height: 703px; padding: 24px; left: 262px; top: 1319px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+            <div style="color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">Tool authors</div>
+            <div style="width: 808px; height: 80px"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">This tool was created at the University of Southern California’s </span><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Brain and Creativity Institute</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> (directed by Drs. Antonio and Hanna Damasio), the </span><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Brain and Music Lab</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> (directed by Dr. Assal Habibi), and the </span><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Signal Analysis and Interpretation Laboratory</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> (directed by Shrikanth Narayanan).</span></div>
+            <div style="padding-top: 19px; padding-bottom: 19px; padding-right: 74px; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
+                <div style="width: 160px; height: 160px; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%)"></div>
+                <div style="width: 640px; height: 137px"><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 700; text-decoration: underline; word-wrap: break-word">Sarah Hennessy, MA</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> developed this tool while obtaining her PhD in Brain and Cognitive Sciences at USC’s Brain and Creativity Institute and Brain and Music Lab. Her projects in collaboration with Timothy Greer on the neural and behavioral correlates of music-evoked nostalgia utilized this tool to optimize experimental control in nostalgic stimuli. Sarah is now a postdoctoral fellow at </span><span style="color: #B0C592; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">[when i figure it out]</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">.</span></div>
+            </div>
+            <div style="padding-top: 19px; padding-bottom: 19px; padding-right: 74px; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
+                <div style="width: 160px; height: 160px; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%)"></div>
+                <div style="width: 640px; height: 137px"><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 700; text-decoration: underline; word-wrap: break-word">Timothy Greer, PhD</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> built this tool while obtaining his PhD in Computer Science at the Signal Analysis and Interpretation Laboratory in USC’s Viterbi School of Engineering. Tim is now an Applied Scientist on Amazon’s Music Personalization Team.</span></div>
+            </div>
+            <div style="width: 898px; height: 118px; position: relative">
+                <div style="width: 0px; height: 80px; left: 2px; top: 19px; position: absolute; border: 4px #95B7D0 solid"></div>
+                <div style="width: 384px; height: 80px; left: 18px; top: 19px; position: absolute"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Marcus Au </span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">implemented this tool in the public web-based platform from which you view it today while obtaining his Bachelor’s degree in Computer Science from the University of Southern California.</span></div>
+                <div style="width: 0px; height: 80px; left: 449px; top: 19px; position: absolute; border: 4px #95B7D0 solid"></div>
+                <div style="width: 383px; height: 80px; left: 465px; top: 19px; position: absolute"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 700; word-wrap: break-word">Caitlin Noel </span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">designed the front end interface of this website while obtaining her Bachelor’s degree in Neuroscience from the University of Southern California. <br/></span></div>
+            </div>
+        </div>
+        <div style="width: 1440px; height: 80px; padding-left: 24px; padding-right: 24px; padding-top: 18px; padding-bottom: 18px; left: 0px; top: 0px; position: absolute; background: #95B7D0; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); justify-content: center; align-items: center; gap: 1256px; display: inline-flex">
+            <div style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+                <div style="width: 29.17px; height: 25.83px; background: #333333"></div>
+            </div>
+            <div style="width: 96px; height: 44px; padding-top: 8px; padding-bottom: 7px; padding-left: 13px; padding-right: 14px; justify-content: center; align-items: center; display: inline-flex">
+                <div style="text-align: center; color: #333333; font-size: 24px; font-family: Inter; font-weight: 400; word-wrap: break-word">About</div>
+            </div>
+        </div>
+        <button style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 480px; top: 80px; position: absolute; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%); justify-content: center; align-items: center; display: inline-flex">
+            <div style="width: 200px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Inter; font-weight: 400; word-wrap: break-word">about this tool</div>
+        </button>
+        <button id="page2" style="width: 240px; height: 80px; padding-left: 16px; padding-right: 16px; padding-top: 28px; padding-bottom: 28px; left: 720px; top: 80px; position: absolute; border: 1px #7E7E7E solid; justify-content: center; align-items: center; display: inline-flex">
+            <div style="width: 208px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Inter; font-weight: 400; word-wrap: break-word">about these features</div>
+        </button>
+        <div style="width: 216px; height: 216px; left: -79px; top: 227px; position: absolute; background: #7E7E7E; border-radius: 9999px"></div>
+        <div style="width: 136px; height: 136px; left: 44px; top: 293px; position: absolute">
+            <div style="width: 121.83px; height: 87.83px; left: 7.08px; top: 24.08px; position: absolute; background: #95B7D0"></div>
+        </div>
+        <div style="width: 1440px; height: 104px; left: 0px; top: 2223px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid">
+            <div style="left: 482px; top: 20px; position: absolute; text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2024 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
+            <div style="width: 99px; height: 19px; left: 670px; top: 66px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+                <div style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
+            </div>
+            <div style="width: 24px; height: 24px; left: 1400px; top: 62px; position: absolute">
+                <div style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #656986"></div>
+            </div>
+        </div>
+        <div style="padding: 24px; left: 262px; top: 1121px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+            <div style="color: #333333; font-size: 24px; font-family: Inter; font-weight: 700; word-wrap: break-word">Publications</div>
+            <div style="width: 908px"><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">If you use this tool in your research please </span><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">cite it</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word"> and </span><span style="color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">let us know</span><span style="color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">, so that we can include your work in our database.<br/><br/>         1.  Hennessy et al<br/>         2.  Noel et al<br/>         3.  Au et al</span></div>
+        </div>
+        <div style="width: 32px; height: 48px; left: 1218px; top: 1270.90px; position: absolute">
+            <div style="width: 21.33px; height: 22.69px; left: 0px; top: 25.31px; position: absolute; background: #CACACA"></div>
+            <div style="width: 5.74px; height: 26.62px; left: 15.59px; top: 8.73px; position: absolute; background: #CACACA"></div>
+            <div style="width: 16.41px; height: 9.16px; left: 15.59px; top: 0px; position: absolute; background: #CACACA; border-radius: 2px"></div>
+        </div>
+        <div style="width: 32px; height: 48px; left: 1244.19px; top: 1255px; position: absolute">
+            <div style="width: 21.33px; height: 22.69px; left: 0px; top: 25.31px; position: absolute; background: #768DA3"></div>
+            <div style="width: 5.74px; height: 26.62px; left: 15.59px; top: 8.73px; position: absolute; background: #768DA3"></div>
+            <div style="width: 16.41px; height: 9.16px; left: 15.59px; top: 0px; position: absolute; background: #768DA3; border-radius: 2px"></div>
+        </div>
+    </div>
         
-        <h1> What does this tool do?   </h1>    
-        <p>
-
-            This tool utilizes Spotify’s API to find song recommendations for a given, user-inputted “seed” song. From the “seed” song, the tool extracts all of the Spotify MIR features available <link to features explanation page>. Then, the user selects how they would like their output songs to be matched, and the tool identifies N songs that align with the user-inputted criteria. The output of this tool is a .csv file that contains the seed song, recommendations, and Spotify MIR features of all songs. The intention of this tool is to allow for greater experimental control for researchers, or to help music listeners find new music that they may enjoy. 
-        </p>
-        <h1>
-            Why was this tool created?
-        </h1>    
-        <p>
-
-            This tool was originally created for a project investigating music-evoked emotion; specifically, nostalgia. We aimed to use personalized nostalgic stimuli for each participant, but needed to identify a method of finding musically-matched “control” songs to go along with each personalized nostalgic song. The goal of musically matching songs was to disentangle the effects of the music-evoked emotion from the effects of lower-level musical features such as tempo, or loudness. We used this tool to identify a set of 10 candidate non-nostalgic songs that we then presented to participants to identify whether they were familiar, or nostalgic. Familiar, non-nostalgic songs were selected as eventual Control songs for the study. 
-
-            While the creation of this tool was for one particular case, we envision that this tool will be useful for many different cases and research questions involving music, psychology, neuroscience, and computer science. 
-        </p>
-        <h1>How do I use this tool?</h1>
-            
-        <p>
-            Collect your seed song(s). In original uses of this tool, we collected seed songs from participants, asking them to list songs that made them feel nostalgic. 
-            Decide whether you want to import songs manually or via a spreadsheet.
-            If manually, type the title and artist of the song into the text box
-            If via spreadsheet, download the template spreadsheet and format your list of songs accordingly. Then upload. 
-            Once your songs load, select the musical features that you would like to match based on. For example, perhaps you want to find other songs that were released in the same year as your seed song. Or, maybe you want to find songs that have similar levels of “danceability”. You may select as many criteria as you like. In the original use of this tool, we found that <link to paper, once published> matching based on valence, arousal, release date, and popularity was sufficient to implicitly match for all other features. 
-            Click next, and download your output .csv file. This file will contain your seed songs and their features, and your recommendations and their features.
-            If you have any questions or suggestions for this tool and how we may improve the website’s general functionality, please contact us <link to form>
-            If you encounter a technical bug, please report it <link to bug>. 
-            If you use this tool in your research please cite it <link to cite> and let us know <link to contact> so that we can include your work in our database <link to Publications section>
-
-        </p>
-            
-        <h1>Publications using this tool:</h1>
-        <p>
-            Blah 
-            blah
-            blah
-        </p>
-        <p>
-            If you use this tool in your research, please let us know <link to contact form> so that we can add your publication to our database. 
-        </p>    
-            
-        <h1>Tool authors:</h1>
-            
-        <p>
-            This tool was created at the University of Southern California’s Brain and Creativity Institute <link> (directed by Drs. Antonio <link> and Hanna Damasio <Link>), the Brain and Music Lab <link> (directed by Dr. Assal Habibi <link>) and the Signal Analysis and Interpretation Laboratory <link> (directed by Shrikanth Narayanan <link>). 
-
-                [photo] Sarah Hennessy, MA <link> developed this tool while obtaining her PhD in Brain and Cognitive Sciences at USC’s Brain and Creativity Institute and Brain and Music Lab. Her projects in collaboration with Timothy Greer on the neural and behavioral correlates of music-evoked nostalgia utilized this tool to optimize experimental control in nostalgic stimuli. Sarah is now a postdoctoral fellow at [when i figure it out].
-    
-                [photo] Timothy Greer, PhD,  built this tool while obtaining his PhD in Computer Science at the Signal Analysis and Interpretation Laboratory in USC’s Viterbi School of Engineering. Tim is now an Applied Scientist on Amazon’s Music Personalization Team.
-    
-                Marcus Au implemented this tool in the public web-based platform from which you view it today while obtaining his Bachelors degree in Computer Science from the University of Southern California. 
-    
-                Caitlin Noel designed the front end of this website while obtaining her Bachelor’s degree in Neuroscience form the University of Southern California. 
-    
-        </p>
             
     </div>
 
-    <div class="Footer" >
-        <div class="CreatedBySarahHennessyFromTheUscBrainAndMusicLab2023LosAngelesCaLastUpdatedMmDdYyyy" style="text-align: center; color: #333333; font-size: 16px; font-family: Inter; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab. This is a personal project on Spotify's public APIs and does not represent Spotify.<br/>2023 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
-        <div class="CiteThisTool" style="width: 99px; height: 19px; justify-content: center; align-items: center; display: inline-flex">
-          <div class="CiteThisTool" style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Inter; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
-        </div>
-        <div class="BaseBug" style="width: 100%; height: 100%; position: relative">
-            <img src="bug.png" alt="bug" style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #65698600"></img>
-        </div>
-    </div>
 
 </body>
 
+<script>
+    
+    document.getElementById('page2').addEventListener('click', async(event) => {
+        event.preventDefault();
+        console.log("continuing");
+        window.location.href = "/about2";
+    })
+
+</script>
 
 </html>
