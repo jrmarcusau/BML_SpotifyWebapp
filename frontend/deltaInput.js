@@ -64,10 +64,8 @@ document.getElementById('info-button').addEventListener('click', async(event) =>
 
     const html = 
         `<div id="info-popup" class="info-popup-delta">
-            <h4>What do these features mean?</h4>
-            <p>To see individual descriptions of these features, click the name.</p>
-            <p>https//developer.spotify.com/documentation/web-api/
-                    reference/get-recommendations</p>
+            <p class="subtitle">What do these features mean?</p>
+            <p class="description">To see individual descriptions of these features, click the name or see the “about these features” page. </p>
             <button id="info-x" class="info-x">x</button>
         </div>`
     
