@@ -127,9 +127,9 @@ button {
     width: 600px; 
     height: 600px; 
     position: absolute;
-    right: 470px; top: 209px; 
+    right: -90px; top: 209px; 
     flex-direction: column; 
-    align-items: flex-end;
+    align-items: flex-start;
     display: flex;
     border: 0px dashed green;
     background-color: #0099ff00;
@@ -159,17 +159,34 @@ button {
     padding: none;
 }
 
+.info-box-delta2 { /*fix later*/
+    width: 350px; 
+    height: 200px; 
+    position: absolute;
+    right: -310px; top: -172px; 
+    display: flex; /* This enables flexbox layout */
+    flex-direction: column-reverse; /* This arranges children vertically */
+    justify-content: flex-start; /* This starts the content from the bottom */
+    align-items: flex-start; /* This aligns items to the right */
+    border: 0px dashed navy;
+    background-color: #0099ff00;
+    color: white;
+    padding: none;
+}
+
 .info-popup {
     width: 350px;
     height: auto;
     flex-direction: column; 
-    justify-content: flex-start; 
-    align-items: flex-start; 
-    display: flex;
     position: relative;
-    border: 4px solid #08314c;
-    background-color: #FAFAFA;
     padding: 16px; 
+    background: #FAFAFA; 
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25); 
+    border-radius: 5px; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 4px; 
+    display: inline-flex
 }
 
 .check-background {
