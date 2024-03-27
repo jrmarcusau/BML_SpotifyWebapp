@@ -127,7 +127,7 @@ const UIController = (function() {
         createUploadPopup(id) {
             const html = 
                 `<div class="check-background">
-                    <button id="btn_confirm" class="button">Confirm</button>
+                    <button id="btn_confirm" class="button">Confirm2</button>
                 </div>`;
                 document.querySelector(DOMElements.confirm).insertAdjacentHTML('beforeend', html);
         },
@@ -332,44 +332,8 @@ const APPController = (function(UICtrl) {
     
 
 
-    //upload file ("returns" responseData in object type)
-    DOMInputs.formUpload.addEventListener('click', async(e) => {
-        e.preventDefault();
-        console.log("uploading file");
-        const formData = new FormData();
-        console.log(UICtrl.inputField().file.files[0]);
-        formData.append('fileInput', UICtrl.inputField(1).file.files[0]);
-
-        try {
-            const response = await fetch('/upload', {
-                method: 'POST',
-                body: formData
-            });
-
-            if (!response.ok) throw new Error('File upload failed.');
-
-            const responseData = await response.json();
-            const data = await checkSongArtist(responseData.data[0].name, responseData.data[0].artist);
-            songData1.name = data.tracks.items[0].name;
-            songData1.id = data.tracks.items[0].id;
-            songData1.artist = data.tracks.items[0].artists[0].name;
-
-            /*
-            const userConfirmed = confirm(`Your song is ${songData1.name} by ${songData1.artist}}. Do you want to proceed?`);
-            if (userConfirmed) {
-                songData1.confirm = true;
-            }
-            */
-
-            songData1.confirm = true;
-            UICtrl.createInputConfirm(songData1.id);
-
-        } catch (error) {
-            console.error(error);
-        } finally {}
-
-
-    })
+    
+    
 
     //helper
     async function getFeatures(songId) {

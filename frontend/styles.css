@@ -51,6 +51,7 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    z-index: 10;
 }
 
 .Header {
@@ -103,6 +104,16 @@ button {
     justify-content: center; 
     align-items: center; 
     display: inline-flex
+}
+
+.next-button {
+    background-color: rgba(0, 0, 0, 0); 
+    width: 200px; height: 44px; 
+
+    left:650px;
+    top: 620px;
+    z-index: 10;
+    position: relative;
 }
 
 .btn-continue {
@@ -219,6 +230,7 @@ button {
     align-items: flex-start; 
     display: flex;
     position: relative;
+    z-index: 10;
 }
 
 .info-popup-delta {
@@ -619,6 +631,7 @@ input[type="range"] {
     top: -5%;
     left: 50%;
     transform: translate(-50%, 5%);
+    z-index: 10;
 }
 
 .btn.dropdown-toggle  {

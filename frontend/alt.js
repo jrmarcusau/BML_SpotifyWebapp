@@ -109,6 +109,10 @@ document.body.addEventListener('click', function(event) {
     if (event.target.id === 'info-x') {
         console.log("x-spec");
         document.querySelector('#check-background').remove(); // This removes the popup element itself
+    } 
+
+    if (event.target.id === 'btn_next') {
+        console.log("btn=Next");
     }
     
 });
