@@ -67,7 +67,7 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
         `<div id="check-background" class="check-background">
             <h4>Careful!</h4>
             <p>Add a pop up box that they have to read and then X out of that tells them to go check the input songs on the output sheet. And also tells them that the songs will be matched the same across all the songs in the file</p>
-            <button id="info-x" class="info-x">x</button>
+            <img src="x.png" id="check-x" class="info-x"></img>
         </div>`;
     document.querySelector('#upload').insertAdjacentHTML('beforeend', html);
     
@@ -108,8 +108,14 @@ document.body.addEventListener('click', function(event) {
 
     if (event.target.id === 'info-x') {
         console.log("x-spec");
-        document.querySelector('#check-background').remove(); // This removes the popup element itself
+        document.querySelector('#info-popup').remove();
     } 
+
+    if (event.target.id == 'check-x') {
+        console.log("checkx-spec");
+        document.querySelector('#check-background').remove(); // This removes the popup element itself
+
+    }
 
     if (event.target.id === 'btn_next') {
         console.log("btn=Next");
@@ -173,7 +179,7 @@ document.getElementById('info-button').addEventListener('click', async(event) =>
         `<div id="info-popup" class="info-popup-delta">
             <p class="subtitle">What do these features mean?</p>
             <p class="description">To see individual descriptions of these features, click the name or see the “about these features” page. </p>
-            <button id="info-x" class="info-x">x</button>
+            <img src="x.png" id="info-x" class="info-x"></img>
         </div>`
     
     document.querySelector('#info-popup-border').insertAdjacentHTML('beforeend', html);

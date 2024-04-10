@@ -66,7 +66,7 @@ document.getElementById('info-button').addEventListener('click', async(event) =>
         `<div id="info-popup" class="info-popup-delta">
             <p class="subtitle">What do these features mean?</p>
             <p class="description">To see individual descriptions of these features, click the name or see the “about these features” page. </p>
-            <button id="info-x" class="info-x">x</button>
+            <img src="x.png" id="info-x" class="info-x"></img>
         </div>`
     
     document.querySelector('#info-popup-border').insertAdjacentHTML('beforeend', html);

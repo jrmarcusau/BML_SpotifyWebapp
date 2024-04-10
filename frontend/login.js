@@ -19,9 +19,9 @@ document.getElementById('info-button').addEventListener('click', async(event) =>
         `<div id="info-popup" class="info-popup">
             <p class="subtitle">Why would I want to log in instead of using a public account?</p>
             <p class = "description">Spotify automatically saves the listening preferences of its users. If you log in with your own account, song recommendations will be biased (even with the feature constraints you set) towards your own listening history. If you log in with the public account associated with this tool, your recommendations will be biased towards the history of other users of this site (which will necessarily be broader).</p>
-            <button id="info-x" class="info-x">
-                <img src="x.png" class="x"></img>
-            </button>
+
+            <img src="x.png" id="info-x" class="info-x"></img>
+
         </div>`
     
     document.querySelector('#info-popup-border').insertAdjacentHTML('beforeend', html);
