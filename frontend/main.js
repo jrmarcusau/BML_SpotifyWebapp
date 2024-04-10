@@ -276,7 +276,7 @@ const APPController = (function(UICtrl) {
         confirm: false
     }
 
-    UICtrl.setPageNumber(pageNum);
+    //UICtrl.setPageNumber(pageNum);
 
     //function(string, string): data
     async function checkSongArtist(songInput, artistInput) {
