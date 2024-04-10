@@ -399,8 +399,8 @@ h4 {
 }
 
 .check-background {
-    width: 720px;
-    height: 450px;
+    width: 500px;
+    height: 300px;
     position: absolute; /* Use absolute positioning */
     top: 50%;
     left: 50%;

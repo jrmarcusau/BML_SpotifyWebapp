@@ -64,11 +64,25 @@ var delta_list = {};
 document.querySelector('#upload_check').addEventListener('click', async(e) => {
     e.preventDefault();
     const html = 
-        `<div id="check-background" class="check-background">
-            <h4>Careful!</h4>
-            <p>Add a pop up box that they have to read and then X out of that tells them to go check the input songs on the output sheet. And also tells them that the songs will be matched the same across all the songs in the file</p>
-            <img src="x.png" id="check-x" class="info-x"></img>
-        </div>`;
+        `
+        <div id="check-background" class="check-background">
+            <div style="width: 400px; height: 29px; padding-top: 5px; padding-bottom: 6px; padding-left: 55px; padding-right: 55px; justify-content: center; align-items: center; display: inline-flex">
+                <div style="width: 290px; color: #333333; font-size: 16px; font-family: Arial; font-weight: 700; word-wrap: break-word">Have you checked your spreadsheet?</div>
+            </div>
+            <div style="height: 113px; padding: 16px; justify-content: center; align-items: center; gap: 16px; display: inline-flex">
+                <div style="width: 367px; height: 93px; text-align: center; color: #333333; font-size: 14px; font-family: Arial; font-weight: 400; line-height: 20px; word-wrap: break-word">In order for SoundsLikeThis to work correctly, your spreadsheet must follow the template provided. If you’re ready to upload, click Confirm. If not, please go back and download the template before uploading.</div>
+            </div>
+            <div style="width: 363px; padding: 16px; justify-content: center; align-items: center; gap: 32px; display: inline-flex">
+                <button id="check_goback" style="padding-top: 6px; padding-bottom: 8px; padding-left: 31px; padding-right: 32px; background: #7E7E7E; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: flex">
+                    <div style="text-align: center; color: #FAFAFA; font-size: 16px; font-family: Arial; font-weight: 400; word-wrap: break-word">go back</div>
+                </button>
+                <button id="check_confirm" style="padding-top: 6px; padding-bottom: 8px; padding-left: 34px; padding-right: 33px; background: #2B71B2; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: flex">
+                    <div style="text-align: center; color: #FAFAFA; font-size: 16px; font-family: Arial; font-weight: 400; word-wrap: break-word">confirm</div>
+                </button>
+            </div>
+        </div>
+
+        `
     document.querySelector('#upload').insertAdjacentHTML('beforeend', html);
     
     
@@ -111,9 +125,17 @@ document.body.addEventListener('click', function(event) {
         document.querySelector('#info-popup').remove();
     } 
 
-    if (event.target.id == 'check-x') {
-        console.log("checkx-spec");
-        document.querySelector('#check-background').remove(); // This removes the popup element itself
+
+
+    if (event.target.id == "check_goback") {
+        console.log("check_goback");
+        document.querySelector('#check-background').remove();
+        document.querySelector('#input_file').value = '';
+    }
+
+    if (event.target.id == "check_confirm") {
+        console.log("check_goback");
+        document.querySelector('#check-background').remove();
 
     }
 
