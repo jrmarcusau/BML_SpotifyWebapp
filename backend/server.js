@@ -457,14 +457,16 @@ async function createRawData(data) {
         tempo: origFeatures.tempo,
     })
     for (let i = 0; i < data.tracks.length; i++) {
+        api_url = data.tracks[i].href;
+        let embed_url = api_url.replace("https://api.spotify.com/v1/tracks", "https://open.spotify.com/embed/track");
+
         raw_data.push({
-            
             origSong: origInfo.song,
             origArtist: origInfo.artist,
             recNumber: index[i],
             song: data.tracks[i].name,
             artist: data.tracks[i].artists[0].name,
-            uri: data.tracks[i].href,
+            uri: embed_url,
             energy: energy[i],
             valence: valence[i],
             acousticness: acousticness[i],
