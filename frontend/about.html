@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="HeaderAbout">
+    <div class="Header">
         <div class="MusicMusicListFilled" style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
             
             <img src="music-dropdown.png" alt="dropdown" id="home" style="width: 29.17px; height: 25.83px; background: #33333300; cursor: pointer;"></img>
@@ -19,7 +19,7 @@
     </div>
 
     <div class="Main">
-            <div style="width: 100%; height: 100%; position: relative; background: #FAFAFA">
+            <div style="width: 100%; height: 100%; position: relative; background: #fafafa00">
         <div style="padding: 24px; left: 262px; top: 280px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
             <div style="color: #333333; font-size: 24px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word">What does this tool do?</div>
             <div style="width: 908px; height: 113px"><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">This tool utilizes Spotify’s API to find song recommendations for a given, user-inputted “seed” song. From the “seed” song, the tool extracts all of the </span><a href="https://developer.spotify.com/documentation/web-api/reference/get-audio-features" style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Spotify MIR features</a><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> available. Then, the user selects how they would like their output songs to be matched, and the tool identifies N songs that align with the </span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word">user-inputted criteria</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">. The output of this tool is a .csv file that contains the seed song, recommendations, and Spotify MIR features of all songs. The intention of this tool is to allow for greater experimental control for researchers, or to help music listeners find new music that they may enjoy.</span></div>
@@ -54,7 +54,7 @@
         <button style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 480px; top: 80px; position: absolute; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%); justify-content: center; align-items: center; display: inline-flex">
             <div style="width: 200px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">about this tool</div>
         </button>
-        <button id="page2" style="width: 240px; height: 80px; padding-left: 16px; padding-right: 16px; padding-top: 28px; padding-bottom: 28px; left: 720px; top: 80px; position: absolute; border: 1px #7E7E7E solid; justify-content: center; align-items: center; display: inline-flex">
+        <button id="page2" style="width: 240px; height: 80px; padding-left: 16px; padding-right: 16px; padding-top: 28px; padding-bottom: 28px; left: 720px; top: 80px; position: absolute; border: 1px #7E7E7E solid; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%);justify-content: center; align-items: center; display: inline-flex">
             <div style="width: 208px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">about these features</div>
         </button>
         <div style="width: 216px; height: 216px; left: -79px; top: 227px; position: absolute; background: #7E7E7E; border-radius: 9999px"></div>
@@ -90,8 +90,9 @@
     </div>
 
 
-</body>
 
+</body>
+<script src="about.js"></script>
 <script>
     
     document.getElementById('page2').addEventListener('click', async(event) => {

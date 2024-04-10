@@ -339,7 +339,6 @@ const getRecs = async(token, songId1, features, numResults) => {
     });
     const data = await result.json();
     console.log("getRecs");
-    console.log(data);
     recData = data;
     return data;
 }
@@ -407,18 +406,20 @@ async function createRawData(data) {
     var loudness = [];
     var popularity = [];
     var releasedate = [];
-    var speechines = [];
+    var speechiness = [];
     var tempo = [];
 
     
 
     for (let i = 0; i < data.tracks.length; i++) {
+        console.log("SONG===");
         console.log(data.tracks[i]);
         index.push(i+1);
         songs.push(data.tracks[i].name);
         artists.push(data.tracks[i].artists[0].name);
         uris.push(data.tracks[i].href);
         const features = await getFeatures(token, data.tracks[i].id);
+
         energy.push(features.energy);
         valence.push(features.valence);
         acousticness.push(features.acousticness);
@@ -426,9 +427,9 @@ async function createRawData(data) {
         instrumentalness.push(features.instrumentalness);
         liveness.push(features.liveness);
         loudness.push(features.loudness);
-        popularity.push(features.popularity);
-        releasedate.push(features.releasedate);
-        speechines.push(features.speechines);
+        popularity.push(data.tracks[i].popularity);
+        releasedate.push(data.tracks[i].album.release_date);
+        speechiness.push(features.speechiness);
         tempo.push(features.tempo);
 
         
@@ -453,7 +454,7 @@ async function createRawData(data) {
         loudness: origFeatures.loudness,
         popularity: origFeatures.popularity,
         releasedate: origFeatures.releasedate,
-        speechines: origFeatures.speechines,
+        speechiness: origFeatures.speechiness,
         tempo: origFeatures.tempo,
     })
     for (let i = 0; i < data.tracks.length; i++) {
@@ -476,7 +477,7 @@ async function createRawData(data) {
             loudness: loudness[i],
             popularity: popularity[i],
             releasedate: releasedate[i],
-            speechines: speechines[i],
+            speechiness: speechiness[i],
             tempo: tempo[i],
             
         });
@@ -487,7 +488,6 @@ async function createRawData(data) {
 
 async function recommendationSnapshot() {
     console.log("snapshotting");
-    console.log(recData);
     const raw_data = await createRawData(recData);
     const data = Papa.unparse(raw_data);
     tableData.push(raw_data);

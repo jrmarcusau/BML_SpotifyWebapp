@@ -134,7 +134,7 @@ document.body.addEventListener('click', function(event) {
     }
 
     if (event.target.id == "check_confirm") {
-        console.log("check_goback");
+        console.log("check_confirm");
         document.querySelector('#check-background').remove();
 
     }

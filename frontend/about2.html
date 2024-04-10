@@ -4,22 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
+    <div class="Header" >
+        <div class="MusicMusicListFilled" style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
+            
+            <img src="music-dropdown.png" alt="dropdown" id="home" style="width: 29.17px; height: 25.83px; background: #33333300; cursor: pointer;"></img>
+        </div>
+        
+        <button class="AboutButton" id="about">
+            <div class="About"">About</div>
+        </button>
+    </div>
     <div class="Main">
-        <div style="width: 100%; height: 100%; position: relative; background: #FAFAFA">
+        <div style="width: 100%; height: 100%; position: relative; background: #fafafa00">
             <img style="width: 480px; height: 112px; left: 138px; top: 274px; position: absolute; border: 2px #95B7D0 solid" src="https://via.placeholder.com/480x112" />
-            <div style="width: 1440px; height: 80px; padding-left: 24px; padding-right: 24px; padding-top: 18px; padding-bottom: 18px; left: 0px; top: 0px; position: absolute; background: #95B7D0; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); justify-content: center; align-items: center; gap: 1256px; display: inline-flex">
-                <div style="width: 40px; height: 40px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex">
-                    <div style="width: 29.17px; height: 25.83px; background: #333333"></div>
-                </div>
-                <div style="width: 96px; height: 44px; padding-top: 8px; padding-bottom: 7px; padding-left: 13px; padding-right: 14px; justify-content: center; align-items: center; display: inline-flex">
-                    <div style="text-align: center; color: #333333; font-size: 24px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">About</div>
-                </div>
-            </div>
-            <button id="page1" style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 480px; top: 80px; position: absolute; border: 1px #7E7E7E solid; justify-content: center; align-items: center; display: inline-flex">
+
+            <button id="page1" style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 480px; top: 80px; position: absolute; border: 1px #7E7E7E solid;  background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%); justify-content: center; align-items: center; display: inline-flex">
                 <div style="width: 200px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">about this tool</div>
             </button>
             <button style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 720px; top: 80px; position: absolute; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%); justify-content: center; align-items: center; display: inline-flex">
@@ -86,6 +88,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 <script>
