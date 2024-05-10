@@ -112,25 +112,55 @@ const UIController = (function() {
             document.querySelector(DOMElements.divRecList).insertAdjacentHTML('beforeend', html);
         },
 
+        // Popup when user clicks confirm. Asks the user to confirm that song and artist is right, else go back
         createInputConfirm(id) {
             const url = `https://open.spotify.com/embed/track/${id}`;
-            const html = 
-                `<div class="check-background">
-                    <div class="confirm-widget">
-                        <iframe src="${url}"  width="300px" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
-                    <button id="btn_confirm" class="button">Confirm</button>
-                </div>`;
-            document.querySelector(DOMElements.confirm).insertAdjacentHTML('beforeend', html);
-        },
+            const html = `
+            <div id="confirmation-popup" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: white; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); padding: 20px; width: 800px; height: 500px; z-index: 1000; border-radius: 10px; display: flex;">
+            <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                <iframe src="${url}" width="315px" height="380px" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+            </div>
+            <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <p style="margin-bottom: 20px;">Is this the song you were searching for?</p>
+                <button id="btn_confirm" class="small-button" style="width: 200px; padding: 10px 20px; border-radius: 5px; background-color: #2B71B2; color: white; margin-bottom: 10px;">Confirm</button>
+                <button id="re-enter-button" class="small-button" style="width: 200px; padding: 10px 20px; border-radius: 5px; background-color: #7E7E7E; color: white;">Re-enter</button>
+            </div>
+        </div>
+        
+            `;
+            document.querySelector('body').insertAdjacentHTML('beforeend', html);
+        
+            // Event listener for the "Confirm" button
+            document.getElementById('btn_confirm').addEventListener('click', () => {
+                // Close the popup
+                document.getElementById('confirmation-popup').remove();
+                document.getElementById('btn_submit').style.display = 'inline-block';
 
+            });
+        
+            // Event listener for the "Re-enter" button
+            document.getElementById('re-enter-button').addEventListener('click', () => {
+                // Close the popup
+                document.getElementById('confirmation-popup').remove();
+            });
+        },
+        
+        
+        
+        
+        
+        
+        
+        // I think we can remove this - Dana
+/*
         createUploadPopup(id) {
+            console.log("createUploadPopup");
             const html = 
                 `<div class="check-background">
                     <button id="btn_confirm" class="button">Confirm2</button>
                 </div>`;
                 document.querySelector(DOMElements.confirm).insertAdjacentHTML('beforeend', html);
-        },
+        },*/
 
         async loadDeltaInput(id) {
             const response = await fetch('deltaInput.html');
@@ -138,7 +168,7 @@ const UIController = (function() {
             var html = await response.text();
             const url = `https://open.spotify.com/embed/track/${id}`;
             html = html.replace("${url}", url);
-            console.log(html);
+            // this must be what's showing up next - Dana
             document.getElementById('delta-input').innerHTML = html;
 
             fetch('deltaInput.js')
@@ -293,8 +323,9 @@ const APPController = (function(UICtrl) {
         return response.json();
     }
 
-    //button check valid song and artist
+    // Popup when "check" button is clicked. This asks the user if the song is correct.
     DOMInputs.check.addEventListener('click', async (event) => {
+        console.log("checking something....")
         event.preventDefault();
         const songInput = UICtrl.inputField().song.value;
         const artistInput = UICtrl.inputField().artist.value;

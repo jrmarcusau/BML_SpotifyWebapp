@@ -9,7 +9,8 @@ const { type } = require('os');
 
 const app = express();
 app.use(express.json())
-const port = 5000
+const port = 3000
+//changed this to 3000 rather than 5000
 const path = require('path');
 
 const storage = multer.diskStorage({

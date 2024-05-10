@@ -135,6 +135,7 @@ button .nextSong {
 
 .btn_submit {
     background-color: #ffffff00;
+    display: none;
     width: 200px;
     height: 32px;
     color: #2B71B2;
@@ -143,6 +144,9 @@ button .nextSong {
     font-weight: 400;
     word-wrap: break-word;
     justify-content: left;
+    position: absolute;
+    left: 430px;
+    top:  50px;
 }
 
 .special .button {

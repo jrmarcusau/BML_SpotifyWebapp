@@ -4,6 +4,7 @@ To run:
 - navigate to the backend folder (C:/user/.../BML_SpotifyWebapp/backend/)
 - run (don't type the arrow):
 -   $> node server.js
+-   site will be at http://localhost:3000/ (can change port in server.js)
 
 Possible Problems:
 - missing packages: follow error instructions and download missing packages
