@@ -419,9 +419,10 @@ const APPController = (function(UICtrl) {
         event.preventDefault(); // prevent form from being submitted normally
         UICtrl.resetRecs();
         UICtrl.resetRecDetail();
+        //redirect to download CSV page
+        window.location.href = '/exit';
         
         //encapsulate these in a separate function
-        console.log(UICtrl.inputField());
         if (UICtrl.inputField().features.deltaEnergy.value != ''){
             deltaFeatures.energy = parseFloat(UICtrl.inputField().features.deltaEnergy.value);
         } 

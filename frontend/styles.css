@@ -171,7 +171,8 @@ button .nextSong {
     width: 600px; 
     height: 600px; 
     position: absolute;
-    right: -90px; top: 209px; 
+    right: 50px; 
+    top: 209px; 
     flex-direction: column; 
     align-items: flex-start;
     display: flex;
@@ -188,7 +189,7 @@ button .nextSong {
     top: 450px;
 }
 
-.info-box-delta { /*fix later*/
+.info-box-delta { 
     width: 350px; 
     height: 200px; 
     position: absolute;
@@ -201,6 +202,22 @@ button .nextSong {
     background-color: #0099ff00;
     color: white;
     padding: none;
+    z-index: 1;
+}
+
+.info-box-delta-main { 
+    position: absolute;
+    top: 235px;
+    left: 360px;
+    display: flex; /* This enables flexbox layout */
+    flex-direction: column-reverse; /* This arranges children vertically */
+    justify-content: flex-start; /* This starts the content from the bottom */
+    align-items: flex-start; /* This aligns items to the right */
+    border: 0px dashed navy;
+    background-color: #0099ff00;
+    color: white;
+    padding: none;
+    z-index: 1;
 }
 
 .info-box-delta2 { /*fix later*/
@@ -230,7 +247,8 @@ button .nextSong {
     justify-content: center; 
     align-items: center; 
     gap: 4px; 
-    display: inline-flex
+    display: inline-flex;
+    z-index: 1;
 }
 
 .check-background {

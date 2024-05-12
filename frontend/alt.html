@@ -75,11 +75,10 @@
                         </div>
                     </div>
 
-
-
-                    <label for="numResults" style="font-style: italic;">number of matched output songs: </label>    
-                    <input type="number" id="numResults" name="numResults" min="1" value="10" placeholder="Enter a number" style="width:40px">
-
+                    <div>
+                        <label for="numResults" style="font-style: italic;">Number of matched output songs:</label>    
+                        <input type="number" id="numResults" name="numResults" min="1" style="width: 75px;">
+                    </div>
 
                     <div class="delta-sliders">
                         <!-- Delta GENERAL -->
@@ -94,7 +93,7 @@
                             
                             <input type="checkbox" id="use_valence" class="checkbox"  onchange="checkboxChanged(this)"/>
                             <label for="delta_valence" class="deltaLabel">*Valence:</label>
-                            <input type="range" step="0.01" id="delta_valence"  class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaValenceOutput').value = delta_valence.value">
+                            <input type="range" step="0.01" id="delta_valence"  class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaValenceOutput').value = delta_valence.value" disabled>
                             <output id="deltaValenceOutput" class="delta-output">0.15</output>
                         </div>
 
@@ -103,7 +102,7 @@
                             <input type="checkbox" id="use_energy" class="checkbox" onchange="checkboxChanged(this)"/>
 
                             <label for="delta_energy" class="deltaLabel">*Energy:</label>
-                            <input type="range" step="0.01" id="delta_energy"  class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaEnergyOutput').value = delta_energy.value">
+                            <input type="range" step="0.01" id="delta_energy"  class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaEnergyOutput').value = delta_energy.value" disabled>
                             <output id="deltaEnergyOutput" class="delta-output">0.15</output>
                         </div>
 
@@ -111,7 +110,7 @@
                         <div class="deltaItem">
                             <input type="checkbox" id="use_acousticness" class="checkbox" onchange="checkboxChanged(this)"/>
                             <label for="delta_acousticness" class="deltaLabel">Acousticness:</label>
-                            <input type="range" step="0.01" id="delta_acousticness" class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaAcousticnessOutput').value = delta_acousticness.value">
+                            <input type="range" step="0.01" id="delta_acousticness" class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaAcousticnessOutput').value = delta_acousticness.value" disabled>
                             
                             <output id="deltaAcousticnessOutput" class="delta-output">0.15</output>
                         </div>
@@ -120,7 +119,7 @@
                         <div class="deltaItem">
                             <input type="checkbox" id="use_danceability" class="checkbox" onchange="checkboxChanged(this)"/>
                             <label for="delta_danceability" class="deltaLabel">Danceability:</label>
-                            <input type="range" step="0.01" id="delta_danceability" class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaDanceabilityOutput').value = delta_danceability.value">
+                            <input type="range" step="0.01" id="delta_danceability" class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaDanceabilityOutput').value = delta_danceability.value" disabled>
                             <output id="deltaDanceabilityOutput" class="delta-output">0.15</output>
                         </div>
 
@@ -131,7 +130,7 @@
                             <input type="checkbox" id="use_instrumentalness" class="checkbox" onchange="checkboxChanged(this)" />
 
                             <label for="delta_instrumentalness" class="deltaLabel">Instrumentalness:</label>
-                            <input type="range" step="0.01" id="delta_instrumentalness" class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaInstrumentalnessOutput').value = delta_instrumentalness.value">
+                            <input type="range" step="0.01" id="delta_instrumentalness" class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaInstrumentalnessOutput').value = delta_instrumentalness.value" disabled>
                             <output id="deltaInstrumentalnessOutput" class="delta-output">0.15</output>
                         </div>
 
@@ -140,7 +139,7 @@
                             <input type="checkbox" id="use_liveness" class="checkbox" onchange="checkboxChanged(this)"/>
 
                             <label for="delta_liveness" class="deltaLabel">Liveness:</label>
-                            <input type="range" step="0.01" id="delta_liveness" class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaLivenessOutput').value = delta_liveness.value">
+                            <input type="range" step="0.01" id="delta_liveness" class="slider-color " placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaLivenessOutput').value = delta_liveness.value" disabled>
                             <output id="deltaLivenessOutput" class="delta-output">0.15</output>
                         </div>
 
@@ -149,7 +148,7 @@
                             <input type="checkbox" id="use_loudness" class="checkbox" onchange="checkboxChanged(this)"/>
 
                             <label for="delta_loudness" class="deltaLabel">Loudness:</label>
-                            <input type="range" step="2" id="delta_loudness" class="slider-color" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaLoudnessOutput').value = delta_loudness.value">
+                            <input type="range" step="2" id="delta_loudness" class="slider-color" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaLoudnessOutput').value = delta_loudness.value" disabled>
                             <output id="deltaLoudnessOutput" class="delta-output">3</output>
                         </div>
 
@@ -158,7 +157,7 @@
                             <input type="checkbox" id="use_popularity" class="checkbox" onchange="checkboxChanged(this)"/>
 
                             <label for="delta_popularity" class="deltaLabel">Popularity:</label>
-                            <input type="range" step="2" id="delta_popularity" class="slider-color" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaPopularityOutput').value = delta_popularity.value">
+                            <input type="range" step="2" id="delta_popularity" class="slider-color" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaPopularityOutput').value = delta_popularity.value" disabled>
                             <output id="deltaPopularityOutput" class="delta-output">80</output>
                         </div>
 
@@ -167,7 +166,7 @@
                             <input type="checkbox" id="use_releasedate" class="checkbox" onchange="checkboxChanged(this)"/>
 
                             <label for="delta_releasedate" class="deltaLabel">Release Date:</label>
-                            <input type="range" step="2" id="delta_releasedate" class="slider-color" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaReleaseDateOutput').value = delta_releasedate.value">
+                            <input type="range" step="2" id="delta_releasedate" class="slider-color" placeholder="Enter a decimal number" min="0" max="10" oninput="document.getElementById('deltaReleaseDateOutput').value = delta_releasedate.value" disabled>
                             <output id="deltaReleaseDateOutput" class="delta-output">2010</output>
                         </div>
 
@@ -176,7 +175,7 @@
                             <input type="checkbox" id="use_speechiness" class="checkbox"  onchange="checkboxChanged(this)"/>
 
                             <label for="delta_speechiness" class="deltaLabel">Speechiness:</label>
-                            <input type="range" step="0.01" id="delta_speechiness" class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaSpeechinessOutput').value = delta_speechiness.value">
+                            <input type="range" step="0.01" id="delta_speechiness" class="slider-color" placeholder="Enter a decimal number" min="0.1" max="0.2" oninput="document.getElementById('deltaSpeechinessOutput').value = delta_speechiness.value" disabled>
                             <output id="deltaSpeechinessOutput" class="delta-output">0.15</output>
                         </div>
 
@@ -185,7 +184,7 @@
                             
                             <input type="checkbox" id="use_tempo" class="checkbox"  onchange="checkboxChanged(this)"/>
                             <label for="delta_tempo" class="deltaLabel">Tempo:</label>
-                            <input type="range" step="1" id="delta_tempo"  class="slider-color" placeholder="Enter a decimal number" min="0" max="100" oninput="document.getElementById('deltaTempoOutput').value = delta_tempo.value">
+                            <input type="range" step="1" id="delta_tempo"  class="slider-color" placeholder="Enter a decimal number" min="0" max="100" oninput="document.getElementById('deltaTempoOutput').value = delta_tempo.value" disabled>
                             <output id="deltaTempoOutput" class="delta-output">60</output>
                         </div>
 
@@ -221,7 +220,7 @@
             <div style="position: absolute;text-align: center; color:#2B71B2; 
             font-size: 16px; 
             font-family: Arial, Helvetica, sans-serif; 
-            font-style: italic; word-wrap: break-word;">Next Song</div>
+            font-style: italic; word-wrap: break-word;">Match my songs</div>
         </button>
 
 

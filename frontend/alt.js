@@ -35,19 +35,19 @@ function updateAllSliders(value) {
 }
 
 function checkboxChanged(checkbox) {
-    console.log("hipeee");
     var sliderId = checkbox.id.replace('use_', 'delta_');
     var slider = document.getElementById(sliderId);
 
     if (checkbox.checked) {
         slider.classList.add('slider2');  // Change to gray when checked
         slider.classList.add('sync-slider');
+        slider.removeAttribute('disabled'); // Enable the slider
     } else {
         slider.classList.remove("slider2");
         slider.classList.remove('sync-slider');
+        slider.setAttribute('disabled', 'disabled'); // Disable the slider
     }
 }
-
 
 window.onload = function() {
     console.log("this also chill");
@@ -200,8 +200,7 @@ document.getElementById('info-button').addEventListener('click', async(event) =>
     const html = 
         `<div id="info-popup" class="info-popup-delta">
             <p class="subtitle">What do these features mean?</p>
-            <p class="description">To see individual descriptions of these features, </p> 
-            <p href="about2.html" >see the “about these features” page. </p>
+            <p class="description">To see individual descriptions of these features, click the name or see the <a href="/about">“about these features”</a> page.</p>
             <img src="x.png" id="info-x" class="info-x"></img>
         </div>`
     
