@@ -33,11 +33,52 @@
             <div style="width: 908px; height: 284px"><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">1.  Collect your seed song(s). In original uses of this tool, we collected seed songs from participants, asking them to list songs that made them feel nostalgic. <br/><br/>2.  Decide whether you want to import songs manually or via a spreadsheet.<br/>     a. If manually, type the title and artist of the song into the text box.<br/>     b. If via spreadsheet, download the template spreadsheet and format your list of songs accordingly. Then upload. <br/><br/>3.  Once your songs load, select the musical features that you would like to match based on. For example, perhaps you want to find other songs that were released in the same year as your seed song. Or, maybe you want to find songs that have similar levels of “danceability”. You may select as many criteria as you like. In the original use of this tool, we found that </span><span style="color: #B0C592; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word"><link to paper, once published></span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> matching based on valence, energy, release date, and popularity was sufficient to implicitly match for all other features. <br/><br/>4.  Click next, and download your output .csv file. This file will contain your seed songs and their features, and your recommendations and their features.<br/></span></div>
         </div>
         <div style="height: 703px; padding: 24px; left: 262px; top: 1319px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
+            <div style="color: #333333; font-size: 24px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word">How can I use this tool in a participant-facing survey?</div>
+            <div style="width: 908px; height: 284px">
+                <span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">
+                    For our original study, we integrated this music-matching tool in a participant-facing Qualtrics survey in order to investigate a particular music-evoked emotion. We did this using the <a href="https://www.qualtrics.com/support/survey-platform/survey-module/question-options/add-javascript/" style="color: #2B71B2; text-decoration: underline;">javascript tools</a> in Qualtrics.
+                    <br/><br/>
+                    You can do the same. For example, if you want participants to self-select songs that evoke a memory, and you’d like to present these songs and a collection of musically-matched algorithm-selected songs from SoundsLikeThis, you can follow the steps below.
+                    <br/><br/>
+                    1. Identify how you want your user-inputted and algorithm-outputted songs to be matched. For our work, we set the difference in Valence and Energy to no more than .15.
+                    <br/><br/>
+                    2. Download our original application (note, in order for this to work you will need to download Javascript and Node.js to your computer).
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;a. Unzip the folder, and cd to the folder from your terminal
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;b. Type “node index_BCI.js” into terminal
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;c. Go to the website displayed in the terminal output
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;d. Now the app is running and you may continue!
+                    <br/><br/>
+                    3. Create your Qualtrics survey. You may download a copy (a .QSF file) of a simplified example from our lab <a href="https://github.com/hennessysarah/SoundsLikeThis-Qualtrics-backend" style="color: #2B71B2; text-decoration: underline;">here</a>. In this example, we asked participants to enter a “nostalgic song”, and then the goal was to find a musically-matched song that was unfamiliar. If a musically-matched song was rated as familiar, the survey would present the participant with another musically-matched song up to 10 more times. (See instructions on how to import a QSF file into Qualtrics <a href="https://www.qualtrics.com/support/survey-platform/survey-module/survey-tools/import-and-export-surveys/" style="color: #2B71B2; text-decoration: underline;">here</a>).
+                    <br/><br/>
+                    4. Click on the song input block, and navigate to the “</> Javascript” menu.
+                    <br/><br/>
+                    5. Edit the Javascript as necessary. Specifically, you might want to edit the following sections:
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;a. varAccessToken: replace with your unique access token from <a href="https://developer.spotify.com/documentation/web-api/tutorials/getting-started" style="color: #2B71B2; text-decoration: underline;">Spotify API</a>
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;b. min_ar, max_ar, min_val, max_val, min_pop. These are variables that indicate how you want to match your songs based on arousal, valence, and popularity. They are set in the example to .15 for valence and arousal and minimum of 80 for popularity. You can change these values here.
+                    <br/>
+                    &nbsp;&nbsp;&nbsp;c. Number of recommendations. If you want more or fewer recommendations than 10, you can edit this throughout the javascript block (e.g, rec_array.length)
+                    <br/><br/>
+                    6. Save your project and test thoroughly.
+                    <br/><br/>
+                </span>
+                
+                
+            </div>
+            
+            
+        </div>
+        <div style="height: 703px; padding: 24px; left: 262px; top: 2000px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
             <div style="color: #333333; font-size: 24px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word">Tool authors</div>
             <div style="width: 808px; height: 80px"><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">This tool was created at the University of Southern California’s </span><a href="https://dornsife.usc.edu/bci/" style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Brain and Creativity Institute</a><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> (directed by Drs. Antonio and Hanna Damasio), the </span><a href="https://dornsife.usc.edu/brainandmusic/" style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Brain and Music Lab</a><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> (directed by Dr. Assal Habibi), and the </span><a href="https://sail.usc.edu/" style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Signal Analysis and Interpretation Laboratory</a><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> (directed by Shrikanth Narayanan).</span></div>
             <div style="padding-top: 19px; padding-bottom: 19px; padding-right: 74px; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
                 <div style="width: 160px; height: 160px; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%)"></div>
-                <div style="width: 640px; height: 137px"><span style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-decoration: underline; word-wrap: break-word">Sarah Hennessy, MA</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> developed this tool while obtaining her PhD in Brain and Cognitive Sciences at USC’s Brain and Creativity Institute and Brain and Music Lab. Her projects in collaboration with Timothy Greer on the neural and behavioral correlates of music-evoked nostalgia utilized this tool to optimize experimental control in nostalgic stimuli. Sarah is now a postdoctoral fellow at </span><span style="color: #B0C592; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word">[when i figure it out]</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">.</span></div>
+                <div style="width: 640px; height: 137px"><span style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; text-decoration: underline; word-wrap: break-word">Sarah Hennessy, PhD</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> developed this tool while obtaining her PhD in Brain and Cognitive Sciences at USC’s Brain and Creativity Institute and Brain and Music Lab. Her projects in collaboration with Timothy Greer on the neural and behavioral correlates of music-evoked nostalgia utilized this tool to optimize experimental control in nostalgic stimuli. Sarah is now a postdoctoral fellow at University of Arizona</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">.</span></div>
             </div>
             <div style="padding-top: 19px; padding-bottom: 19px; padding-right: 74px; justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex">
                 <div style="width: 160px; height: 160px; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%)"></div>
@@ -51,29 +92,57 @@
             </div>
         </div>
 
-        <button style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 480px; top: 80px; position: absolute; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%); justify-content: center; align-items: center; display: inline-flex">
+        <button style="width: 240px; height: 80px; padding-left: 20px; padding-right: 20px; padding-top: 28px; padding-bottom: 28px; left: 480px; top: 80px; position: absolute; border: 1px #7E7E7E solid; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%); justify-content: center; align-items: center; display: inline-flex">
             <div style="width: 200px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">about this tool</div>
         </button>
-        <button id="page2" style="width: 240px; height: 80px; padding-left: 16px; padding-right: 16px; padding-top: 28px; padding-bottom: 28px; left: 720px; top: 80px; position: absolute; border: 1px #7E7E7E solid; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%);justify-content: center; align-items: center; display: inline-flex">
+        <button id="page2" style="width: 240px; height: 80px; padding-left: 16px; padding-right: 16px; padding-top: 28px; padding-bottom: 28px; left: 720px; top: 80px; position: absolute; background: radial-gradient(50.00% 5.56% at 50.00% 3.27%, rgba(148.67, 183.47, 208.33, 0.60) 0%, rgba(250, 250, 250, 0.50) 49%, rgba(148.67, 183.47, 208.33, 0.60) 100%);justify-content: center; align-items: center; display: inline-flex">
             <div style="width: 208px; height: 24px; text-align: center; color: #333333; font-size: 20px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">about these features</div>
         </button>
         <div style="width: 216px; height: 216px; left: -79px; top: 227px; position: absolute; background: #7E7E7E; border-radius: 9999px"></div>
         <div style="width: 136px; height: 136px; left: 44px; top: 293px; position: absolute">
             <div style="width: 121.83px; height: 87.83px; left: 7.08px; top: 24.08px; position: absolute; background: #95B7D0"></div>
         </div>
-        <div style="width: 1440px; height: 104px; left: 0px; top: 2223px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid">
-            <div style="left: 482px; top: 20px; position: absolute; text-align: center; color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2024 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
-            <div style="width: 99px; height: 19px; left: 670px; top: 66px; position: absolute; justify-content: center; align-items: center; display: inline-flex">
+        <div style="width: 1440px; height: 104px; left: 0px; top: 3000px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid">
+            <div style="left: 482px; top: 20px; position: absolute; text-align: center; color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">
+                Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2024 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY
+            </div>
+            <div style="width: 99px; height: 19px; left: 670px; top: 66px; position: absolute; justify-content: center; align-items: center; display: inline-flex; cursor: pointer;" onclick="showCitation()">
                 <div style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
             </div>
-            <div style="width: 24px; height: 24px; left: 1400px; top: 62px; position: absolute">
-                <div style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #656986"></div>
-            </div>
         </div>
+    
+        <div id="citationBox" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 20px; background-color: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 1px solid #333333; z-index: 1000;">
+            <p style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-align: center; word-wrap: break-word;">
+                Hennessy, S., & Greer, T. (2024). SoundsLikeThis: A music matching tool for researchers and music-lovers [Computer software]. University of Southern California. SoundsLikeThis.us
+            </p>
+            <button onclick="hideCitation()" style="display: block; margin: 20px auto 0; padding: 10px 20px; font-size: 16px; background-color: #2B71B2; color: white; border: none; cursor: pointer;">Close</button>
+        </div>
+
         <div style="padding: 24px; left: 262px; top: 1121px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: inline-flex">
             <div style="color: #333333; font-size: 24px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; word-wrap: break-word">Publications</div>
-            <div style="width: 908px"><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">If you use this tool in your research please </span><span style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">cite it</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> and </span><span style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">let us know</span><span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">, so that we can include your work in our database.<br/><br/>         1.  Hennessy et al<br/>         2.  Noel et al<br/>         3.  Au et al</span></div>
+            <div style="width: 908px">
+                <span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">If you use this tool in your research please </span>
+                <span style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word; cursor: pointer;" onclick="showCitation()">cite it</span>
+                <span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word"> and </span>
+                <span style="color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word; cursor: pointer;" onclick="showEmailBox()">let us know</span>
+                <span style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">, so that we can include your work in our database.<br/><br/>         1. Hennessy, S., Greer, T., Narayanan, S., Habibi, A., (in press). Unique affective profile of nostalgic music: An extension and conceptual replication of Barrett et al., 2010. Emotion.</span>
+            </div>
         </div>
+    
+        <div id="citationBox" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 20px; background-color: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 1px solid #333333; z-index: 1000;">
+            <p style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-align: center; word-wrap: break-word;">
+                Hennessy, S., & Greer, T. (2024). SoundsLikeThis: A music matching tool for researchers and music-lovers [Computer software]. University of Southern California. SoundsLikeThis.us
+            </p>
+            <button onclick="hideCitation()" style="display: block; margin: 20px auto 0; padding: 10px 20px; font-size: 16px; background-color: #2B71B2; color: white; border: none; cursor: pointer;">Close</button>
+        </div>
+    
+        <div id="emailBox" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 20px; background-color: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 1px solid #333333; z-index: 1000;">
+            <p style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-align: center; word-wrap: break-word;">
+                Email hennesss@usc.edu with subject line: “use of SoundsLikeThis”
+            </p>
+            <button onclick="hideEmailBox()" style="display: block; margin: 20px auto 0; padding: 10px 20px; font-size: 16px; background-color: #2B71B2; color: white; border: none; cursor: pointer;">Close</button>
+        </div>
+
         <div style="width: 32px; height: 48px; left: 1218px; top: 1270.90px; position: absolute">
             <div style="width: 21.33px; height: 22.69px; left: 0px; top: 25.31px; position: absolute; background: #CACACA"></div>
             <div style="width: 5.74px; height: 26.62px; left: 15.59px; top: 8.73px; position: absolute; background: #CACACA"></div>
@@ -101,6 +170,20 @@
         window.location.href = "/about2";
     })
 
+    function showCitation() {
+        document.getElementById('citationBox').style.display = 'block';
+    }
+    function hideCitation() {
+        document.getElementById('citationBox').style.display = 'none';
+    }
+
+    function showEmailBox() {
+            document.getElementById('emailBox').style.display = 'block';
+    }
+    
+    function hideEmailBox() {
+        document.getElementById('emailBox').style.display = 'none';
+    }
 </script>
 
 </html>

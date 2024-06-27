@@ -113,12 +113,14 @@ app.post('/upload', upload.single('fileInput'), (req, res) => {
 
 app.post('/multiprocess', async (req, res) => {
     console.log("multiprocess");
+    // This is not showing up, at least in the manual upload flow
     const song_list = req.body.song_list;
     const delta_list = req.body.delta_list;
     //process delta_list to features
 
     console.log(song_list);
-    console.log(delta_list);
+    console.log("delta_list + " + delta_list);
+    console.log("delta_list.numResults + " + delta_list.numResults);
 
     for (let i = 0; i < song_list.length; i++) {
         let song = song_list[i];
@@ -310,7 +312,7 @@ const adjustFeatures = (origFeatures, offset) => {
     adjData.minVal = parseFloat((Math.max(origFeatures.valence - offset.valence, 0.01)).toFixed(2));
     adjData.maxVal = parseFloat((Math.min(origFeatures.valence + offset.valence, 0.99)).toFixed(2));
     adjData.pop = 80;
-
+// What is this doing? - Dana
     return adjData;
 }
 
@@ -325,8 +327,8 @@ app.post('/api/adjustFeatures', async (req, res) => {
 var recData = {};
 var origInfo = {};
 const getRecs = async(token, songId1, features, numResults) => {
-    console.log("numresults");
-    console.log(numResults);
+    console.log("numresults: " + numResults);
+
     const limit = numResults;
 
     const seedTracks = [songId1]; // An array of multiple seed track IDs

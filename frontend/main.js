@@ -277,8 +277,6 @@ const APPController = (function(UICtrl) {
     const numberOfPages = localStorage.getItem('numberOfPages');
     var pageNum = 1;
     // Now you can use numberOfPages in your main.js
-    console.log(numberOfPages); // Just an example to show the number in the console
-
 
     var DOMInputs = UICtrl.inputField();
 
@@ -416,15 +414,25 @@ const APPController = (function(UICtrl) {
 
     //submit & process
     DOMInputs.submit.addEventListener('click', async (event) => {
+        console.log("In the event listener for submit button on main.js, aka the match my songs button");
+        // I do see this briefly, so event listener is working - Dana
+
         event.preventDefault(); // prevent form from being submitted normally
-        UICtrl.resetRecs();
-        UICtrl.resetRecDetail();
-        //redirect to download CSV page
-        window.location.href = '/exit';
         
+        console.log("UICtrl.inputField().features.deltaEnergy.value" + UICtrl.inputField().features.deltaEnergy.value)
+        // This is working. This by default is .15 and if I scroll, the value does change.
+        
+        // UICtrl.resetRecs();
+        // UICtrl.resetRecDetail();
+        
+        //redirect to download CSV page
+        //window.location.href = '/exit';
+        // Going to try putting this at the end of the function 
+
         //encapsulate these in a separate function
         if (UICtrl.inputField().features.deltaEnergy.value != ''){
             deltaFeatures.energy = parseFloat(UICtrl.inputField().features.deltaEnergy.value);
+            console.log("deltaFeatures.energy + " + deltaFeatures.energy);
         } 
         if (UICtrl.inputField().features.deltaValence.value != ''){
             deltaFeatures.valence = parseFloat(UICtrl.inputField().features.deltaValence.value);
@@ -461,12 +469,16 @@ const APPController = (function(UICtrl) {
             songData1.origFeatures = await getFeatures(songData1.id);
             console.log(songData1.origFeatures);
             songData1.adjustFeatures = await adjustFeatures(songData1.origFeatures, deltaFeatures);
+            console.log ("songData1.adjustFeatures  +" + songData1.adjustFeatures )
             const recs = await getRecs(songData1.id, songData1.adjustFeatures);
-            console.log("incoming recs");
-            console.log(recs);
+            console.log("recs + " + recs);
             recs.tracks.forEach(r => UICtrl.createRec(r.href, r.name));
             UICtrl.createDownload();
         }
+
+        //redirect to download CSV page
+        //window.location.href = '/exit'; DANA UNDO THIS
+        // This was at the top before
     })
 
     //helper

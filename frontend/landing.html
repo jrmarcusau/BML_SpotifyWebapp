@@ -54,14 +54,21 @@
         
     </div>
 
-    <div class="Footer" >
-        <div class="CreatedBySarahHennessyFromTheUscBrainAndMusicLab2023LosAngelesCaLastUpdatedMmDdYyyy" style="text-align: center; color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">Created by Sarah Hennessy from the USC Brain and Music Lab. This is a personal project on Spotify's public APIs and does not represent Spotify.<br/>2023 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY</div>
-        <div class="CiteThisTool" style="width: 99px; height: 19px; justify-content: center; align-items: center; display: inline-flex">
-          <div class="CiteThisTool" style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
+    <div style="width: 1440px; height: 104px; left: 0px; top: 1000px; position: absolute; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-top: 1px #333333 solid">
+        <div style="left: 482px; top: 20px; position: absolute; text-align: center; color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; word-wrap: break-word">
+            Created by Sarah Hennessy from the USC Brain and Music Lab<br/>2024 ・ Los Angeles, CA ・ Last updated: MM/DD/YYYY
         </div>
-        <div class="BaseBug" style="width: 100%; height: 100%; position: relative">
-            <img src="bug.png" alt="bug" style="width: 21.50px; height: 21.50px; left: 1.25px; top: 1.25px; position: absolute; background: #65698600"></img>
+        <div style="width: 99px; height: 19px; left: 670px; top: 66px; position: absolute; justify-content: center; align-items: center; display: inline-flex; cursor: pointer;" onclick="showCitation()">
+            <div style="text-align: center; color: #2B71B2; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-decoration: underline; word-wrap: break-word">Cite this Tool</div>
         </div>
+    
+    </div>
+
+    <div id="citationBox" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 400px; padding: 20px; background-color: white; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border: 1px solid #333333; z-index: 1000;">
+        <p style="color: #333333; font-size: 16px; font-family: Arial, Helvetica, sans-serif; font-weight: 400; text-align: center; word-wrap: break-word;">
+            Hennessy, S., & Greer, T. (2024). SoundsLikeThis: A music matching tool for researchers and music-lovers [Computer software]. University of Southern California. SoundsLikeThis.us
+        </p>
+        <button onclick="hideCitation()" style="display: block; margin: 20px auto 0; padding: 10px 20px; font-size: 16px; background-color: #2B71B2; color: white; border: none; cursor: pointer;">Close</button>
     </div>
 
 </body>
@@ -70,5 +77,13 @@
 
 <script src="land.js"></script>
 <script src="about.js"></script>
+<script>
+    function showCitation() {
+        document.getElementById('citationBox').style.display = 'block';
+    }
+    function hideCitation() {
+        document.getElementById('citationBox').style.display = 'none';
+    }
+</script>
 
 </html>

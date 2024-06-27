@@ -1,7 +1,6 @@
 
 
 function updateAllSliders(value) {
-    console.log("this chill");
     // Update the output for the general slider
     document.getElementById('generalSliderOutput').value = value;
 
@@ -118,14 +117,10 @@ document.body.addEventListener('click', function(event) {
     // Check if the clicked element is the button
     //event.preventDefault();
     
-    console.log("clicky");
-
     if (event.target.id === 'info-x') {
         console.log("x-spec");
         document.querySelector('#info-popup').remove();
     } 
-
-
 
     if (event.target.id == "check_goback") {
         console.log("check_goback");
@@ -136,16 +131,12 @@ document.body.addEventListener('click', function(event) {
     if (event.target.id == "check_confirm") {
         console.log("check_confirm");
         document.querySelector('#check-background').remove();
-
     }
 
     if (event.target.id === 'btn_next') {
         console.log("btn=Next");
     }
-    
 });
-
-
 
 document.querySelector('#btn_next').addEventListener('click', async(e) => {
     e.preventDefault();
