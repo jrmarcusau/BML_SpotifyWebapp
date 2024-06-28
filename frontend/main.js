@@ -422,12 +422,12 @@ const APPController = (function(UICtrl) {
         console.log("UICtrl.inputField().features.deltaEnergy.value" + UICtrl.inputField().features.deltaEnergy.value)
         // This is working. This by default is .15 and if I scroll, the value does change.
         
-        // UICtrl.resetRecs();
-        // UICtrl.resetRecDetail();
+        UICtrl.resetRecs();
+        UICtrl.resetRecDetail();
         
-        //redirect to download CSV page
-        //window.location.href = '/exit';
-        // Going to try putting this at the end of the function 
+        // This will redirect to the download CSV file. If we want to see any of the console logs down below, we'll need to comment this out bc this will happen before those console logs.
+        // The content down below will need to be fixed. It's currently displaying something weird in the background.
+        window.location.href = '/exit';
 
         //encapsulate these in a separate function
         if (UICtrl.inputField().features.deltaEnergy.value != ''){
@@ -475,10 +475,6 @@ const APPController = (function(UICtrl) {
             recs.tracks.forEach(r => UICtrl.createRec(r.href, r.name));
             UICtrl.createDownload();
         }
-
-        //redirect to download CSV page
-        //window.location.href = '/exit'; DANA UNDO THIS
-        // This was at the top before
     })
 
     //helper
