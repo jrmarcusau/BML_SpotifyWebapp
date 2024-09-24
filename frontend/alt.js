@@ -75,7 +75,7 @@ document.querySelector('#upload_check').addEventListener('click', async(e) => {
                 <button id="check_goback" style="padding-top: 6px; padding-bottom: 8px; padding-left: 31px; padding-right: 32px; background: #7E7E7E; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: flex">
                     <div style="text-align: center; color: #FAFAFA; font-size: 16px; font-family: Arial; font-weight: 400; word-wrap: break-word">go back</div>
                 </button>
-                <button id="check_confirm" style="padding-top: 6px; padding-bottom: 8px; padding-left: 34px; padding-right: 33px; background: #2B71B2; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: flex">
+                <button id="check_confirm" style="padding-top: 6px; padding-bottom: 8px; padding-left: 34px; padding-right: 33px; background: #265a91; border-radius: 8px; overflow: hidden; justify-content: center; align-items: center; display: flex">
                     <div style="text-align: center; color: #FAFAFA; font-size: 16px; font-family: Arial; font-weight: 400; word-wrap: break-word">confirm</div>
                 </button>
             </div>

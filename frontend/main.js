@@ -122,7 +122,7 @@ const UIController = (function() {
             </div>
             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <p style="margin-bottom: 20px;">Is this the song you were searching for?</p>
-                <button id="btn_confirm" class="small-button" style="width: 200px; padding: 10px 20px; border-radius: 5px; background-color: #2B71B2; color: white; margin-bottom: 10px;">Confirm</button>
+                <button id="btn_confirm" class="small-button" style="width: 200px; padding: 10px 20px; border-radius: 5px; background-color: #265a91; color: white; margin-bottom: 10px;">Confirm</button>
                 <button id="re-enter-button" class="small-button" style="width: 200px; padding: 10px 20px; border-radius: 5px; background-color: #7E7E7E; color: white;">Re-enter</button>
             </div>
         </div>
@@ -323,41 +323,66 @@ const APPController = (function(UICtrl) {
 
     // Popup when "check" button is clicked. This asks the user if the song is correct.
     DOMInputs.check.addEventListener('click', async (event) => {
-        console.log("checking something....")
-        event.preventDefault();
-        const songInput = UICtrl.inputField().song.value;
-        const artistInput = UICtrl.inputField().artist.value;
-        const data = await checkSongArtist(songInput, artistInput);
-
-        songData1.name = data.tracks.items[0].name;
-        songData1.id = data.tracks.items[0].id;
-        songData1.artist = data.tracks.items[0].artists[0].name;
-
-        /*
-        const userConfirmed = confirm(`Your song is ${songData1.name} by ${songData1.artist}}. Do you want to proceed?`);
-        if (userConfirmed) {
+        try {
+            console.log("checking something....");
+            event.preventDefault();
             
+            // Get the user input values
+            const songInput = UICtrl.inputField().song.value;
+            const artistInput = UICtrl.inputField().artist.value;
+    
+            // Basic validation for empty inputs
+            if (!songInput || !artistInput) {
+                throw new Error("Song or artist input is missing. Please provide both.");
+            }
+    
+            // Attempt to fetch data for the song and artist
+            const data = await checkSongArtist(songInput, artistInput);
+            
+            // Ensure valid data was returned
+            if (!data || !data.tracks || data.tracks.items.length === 0) {
+                throw new Error("No matching song or artist found. Please try again.");
+            }
+    
+            // Set song data from the response
+            songData1.name = data.tracks.items[0].name;
+            songData1.id = data.tracks.items[0].id;
+            songData1.artist = data.tracks.items[0].artists[0].name;
+    
+            // Uncomment this block if you want user confirmation before proceeding
+            /*
+            const userConfirmed = confirm(`Your song is ${songData1.name} by ${songData1.artist}. Do you want to proceed?`);
+            if (!userConfirmed) {
+                return; // Exit if user does not confirm
+            }
+            */
+    
+            // Set confirm flag to true
+            songData1.confirm = true;
+    
+            // Call function to create confirmation input
+            UICtrl.createInputConfirm(songData1.id);
+        } catch (error) {
+            console.error("An error occurred while checking the song and artist:", error.message);
+            alert(`Error: ${error.message}`);  // Show error to the user
         }
-        */
-        
-        songData1.confirm = true; //needs to be fixed. 
-
-        UICtrl.createInputConfirm(songData1.id);
-
-    })
-
+    });
     
     document.body.addEventListener('click', function(event) {
-        // Check if the clicked element is the button
-        //event.preventDefault();
-        
-        if (event.target.id === 'btn_confirm') {
-            UICtrl.resetInputConfirm();
-            UICtrl.loadDeltaInput(songData1.id);
-            DOMInputs = UICtrl.inputField();
+        try {
+            // Check if the clicked element is the confirmation button
+            if (event.target.id === 'btn_confirm') {
+                // Perform actions for confirmation
+                UICtrl.resetInputConfirm();
+                UICtrl.loadDeltaInput(songData1.id);
+                DOMInputs = UICtrl.inputField();
+            }
+        } catch (error) {
+            console.error("An error occurred during confirmation handling:", error.message);
+            alert(`Error: ${error.message}`);  // Show error to the user
         }
-        
     });
+    
     
 
 
